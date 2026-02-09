@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爆款智坊 | AI辅助内容创作培训平台</title>
+    <meta name="description" content="面向投顾的AI创作培训与资源平台，提供系统化的AI工具使用培训、Skill工具下载和内容创作工作流">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon.png">
+
+    <!-- Preload 关键资源 -->
+    <link rel="preload" href="assets/css/slides.css" as="style">
+    <link rel="preload" href="assets/js/slides.js" as="script">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS (仅用于首页) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- 关键CSS内联（首屏渲染必需） -->
+    <style>
+        :root{--charcoal:#1a1a1a;--rice:#FFF;--stone:#666;--light-stone:#f5f5f5;--accent:#c9a96e}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none}html::-webkit-scrollbar{display:none}body{font-family:'Inter',sans-serif;background-color:var(--rice);color:var(--charcoal);overflow-x:hidden;line-height:1.7}.serif{font-family:'Playfair Display',serif}.global-nav{position:fixed;top:0;left:0;right:0;padding:1.5rem 2.5rem 1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;z-index:100;background:linear-gradient(to bottom,rgba(255,255,255,.95) 0%,rgba(255,255,255,0) 100%)}.nav-logo{font-size:1.1rem;font-weight:600;letter-spacing:-.02em;color:var(--charcoal);text-decoration:none}.nav-links{display:flex;gap:2.5rem;font-size:.8rem;letter-spacing:.05em}.nav-link{position:relative;cursor:pointer;transition:opacity .3s;color:var(--stone);text-decoration:none}.nav-link:hover{opacity:.6;color:var(--charcoal)}.nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background-color:var(--charcoal);transition:width .3s ease}.nav-link:hover::after{width:100%}.progress-bar{position:fixed;top:0;left:0;height:2px;background-color:var(--accent);z-index:1000;transition:width .3s ease}
+    </style>
+
+    <!-- 非关键CSS异步加载 -->
+    <link href="assets/css/slides.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="assets/css/slides.css" rel="stylesheet"></noscript>
+</head>
+<body>
+    <!-- 进度条 -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- 全局导航 -->
+    <nav class="global-nav">
+        <a class="nav-logo" href="index.html" style="display: flex; align-items: center; gap: 0.75rem;">
+            <img src="assets/images/logo.png" alt="爆款智坊 Logo" style="height: 40px; width: auto;">
+            <span>爆款智坊</span>
+        </a>
+        <div class="nav-links">
+            <a class="nav-link" href="index.html">核心教程</a>
+            <a class="nav-link" href="guides.html">操作指引</a>
+            <a class="nav-link" href="resources.html">资源下载</a>
+            <a class="nav-link" href="about.html">关于</a>
+        </div>
+    </nav>
+
+    <!-- 右侧浮动目录 -->
+    <nav class="toc-nav" id="tocNav">
+        <div class="toc-item active" onclick="goToSlide(0)">
+            <div class="toc-dot"></div>
+            <div class="toc-line"></div>
+            <span class="toc-label">引言</span>
+        </div>
+        <div class="toc-separator"></div>
+        <div class="toc-item" onclick="goToSlide(1)">
+            <div class="toc-dot"></div>
+            <div class="toc-line"></div>
+            <span class="toc-label">1.0 认知重启</span>
+        </div>
+        <div class="toc-item" onclick="goToSlide(2)">
+            <div class="toc-dot"></div>
+            <div class="toc-line"></div>
+            <span class="toc-label">1.1 核心原理</span>
+        </div>
+        <div class="toc-item" onclick="goToSlide(3)">
+            <div class="toc-dot"></div>
+            <div class="toc-line"></div>
+            <span class="toc-label">1.2 真相</span>
+        </div>
+        <div class="toc-item" onclick="goToSlide(4)">
+            <div class="toc-dot"></div>
+            <div class="toc-line"></div>
+            <span class="toc-label">1.3 缺陷一</span>
+        </div>
+        <div class="toc-item" onclick="goToSlide(5)">
+            <div class="toc-dot"></div>
+            <div class="toc-line"></div>
+            <span class="toc-label">1.4 缺陷二</span>
+        </div>
+        <div class="toc-item" onclick="goToSlide(6)">
+            <div class="toc-dot"></div>
+            <div class="toc-line"></div>
+            <span class="toc-label">1.5 缺陷三</span>
+        </div>
+        <div class="toc-separator"></div>
+        <div class="toc-item" onclick="goToSlide(7)">
+            <div class="toc-dot"></div>
+            <div class="toc-line"></div>
+            <span class="toc-label">2.0 精准协作</span>
+        </div>
+        <div class="toc-item" onclick="goToSlide(8)">
+            <div class="toc-dot"></div>
+            <div class="toc-line"></div>
+            <span class="toc-label">2.1 核心法则</span>
+        </div>
+        <div class="toc-item" onclick="goToSlide(9)">
+            <div class="toc-dot"></div>
+            <div class="toc-line"></div>
+            <span class="toc-label">2.2 系统提示词</span>
+        </div>
+        <div class="toc-item" onclick="goToSlide(10)">
+            <div class="toc-dot"></div>
+            <div class="toc-line"></div>
+            <span class="toc-label">2.3 元提示词</span>
+        </div>
+        <div class="toc-item" onclick="goToSlide(11)">
+            <div class="toc-dot"></div>
+            <div class="toc-line"></div>
+            <span class="toc-label">2.4 工具落地</span>
+        </div>
+        <div class="toc-separator"></div>
+        <div class="toc-item" onclick="goToSlide(12)">
+            <div class="toc-dot"></div>
+            <div class="toc-line"></div>
+            <span class="toc-label">3.0 进阶破局</span>
+        </div>
+        <div class="toc-item" onclick="goToSlide(13)">
+            <div class="toc-dot"></div>
+            <div class="toc-line"></div>
+            <span class="toc-label">3.1 知识库检索</span>
+        </div>
+        <div class="toc-item" onclick="goToSlide(14)">
+            <div class="toc-dot"></div>
+            <div class="toc-line"></div>
+            <span class="toc-label">3.2 工作流编排</span>
+        </div>
+        <div class="toc-item" onclick="goToSlide(15)">
+            <div class="toc-dot"></div>
+            <div class="toc-line"></div>
+            <span class="toc-label">3.3 Skill范式</span>
+        </div>
+        <div class="toc-separator"></div>
+        <div class="toc-item" onclick="goToSlide(16)">
+            <div class="toc-dot"></div>
+            <div class="toc-line"></div>
+            <span class="toc-label">4.0 灵魂论</span>
+        </div>
+        <div class="toc-item" onclick="goToSlide(17)">
+            <div class="toc-dot"></div>
+            <div class="toc-line"></div>
+            <span class="toc-label">4.1 生产关系</span>
+        </div>
+        <div class="toc-item" onclick="goToSlide(18)">
+            <div class="toc-dot"></div>
+            <div class="toc-line"></div>
+            <span class="toc-label">4.2 分层创作</span>
+        </div>
+        <div class="toc-item" onclick="goToSlide(19)">
+            <div class="toc-dot"></div>
+            <div class="toc-line"></div>
+            <span class="toc-label">4.3 数字基建</span>
+        </div>
+        <div class="toc-item" onclick="goToSlide(20)">
+            <div class="toc-dot"></div>
+            <div class="toc-line"></div>
+            <span class="toc-label">4.4 行动路线</span>
+        </div>
+        <div class="toc-item" onclick="goToSlide(21)">
+            <div class="toc-dot"></div>
+            <div class="toc-line"></div>
+            <span class="toc-label">4.5 警醒共勉</span>
+        </div>
+        <div class="toc-separator"></div>
+        <div class="toc-item" onclick="goToSlide(22)">
+            <div class="toc-dot"></div>
+            <div class="toc-line"></div>
+            <span class="toc-label">终章：启程</span>
+        </div>
+    </nav>
+
+    <section class="slide-container" id="slide-0" data-index="0">
+        <div class="slide-content">
+            <div class="chapter-indicator fade-up">文本创作实操版</div>
+            
+            <div class="content-grid">
+                <div>
+                    <h1 class="display-title serif fade-up delay-100" style="font-size: 3.2rem;">
+                        AI辅助财经领域<br>
+                        新媒体内容创作教程
+                    </h1>
+                    <p class="section-subtitle fade-up delay-200">
+                        从"内容苦力"到"策略大脑"的蜕变之路
+                    </p>
+                    
+                    <div class="fade-up delay-300">
+                        <span class="highlight-bg">提示词工程</span>
+                        <span class="highlight-bg">知识库构建</span>
+                        <span class="highlight-bg">工作流自动化</span>
+                        <span class="highlight-bg">财经新媒体</span>
+                    </div>
+                </div>
+                
+                <div class="fade-up delay-400">
+                    <div class="quote-block" style="margin-top: 0;">
+                        投顾的价值在于洞察、判断和连接——从海量噪音中识别信号，用专业逻辑编织叙事，以有温度的声音触达人心。AI的出现，不是来抢夺这份价值的，而是来解放它的。
+                    </div>
+                    <p class="lead-text">
+                        AI不止于"怎么用"，更关于你，作为投顾"怎么想"。AI是一张地图，指引你穿越工具迷雾，抵达高效创作与专业尊严并存的彼岸。
+                    </p>
+                    <p class="lead-text" style="margin-top: 1rem; color: var(--stone);">
+                        记住这场变革的本质：AI不会取代投顾，但善用AI的投顾，将重新定义投顾工作的价值边界。
+                    </p>
+                </div>
+            </div>
+            
+            <div class="slide-footer">
+                <span> </span>
+                <div class="nav-arrows">
+                    <span class="nav-arrow prev" onclick="prevSlide()">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </span>
+                    <span class="nav-arrow" onclick="nextSlide()">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 幻灯片 2: 第一章 - 页1 -->
+    <section class="slide-container" id="slide-1" data-index="1">
+        <div class="slide-content">
+            <div class="chapter-indicator fade-up">第一章 1.0 认知重启</div>
+
+            <h2 class="display-title serif fade-up delay-100">
+                认知重启 —— 理解你的<span class="highlight-underline">"超级座驾"</span>
+            </h2>
+
+            <p class="section-subtitle fade-up delay-200">
+                AI本质与边界
+            </p>
+
+            <div class="fade-up delay-300">
+                <div class="quote-block" style="margin-top: 2rem;">
+                    想象AI是一辆<span class="highlight-bg">超跑</span>，在坐上驾驶位前，你必须了解这辆车的全部<span class="highlight-underline">性能参数</span>与设计局限。<span class="highlight-underline">盲目信任</span>与<span class="highlight-underline">全盘否定</span>，同样危险。
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <span>01 / 10</span>
+                <div class="nav-arrows">
+                    <span class="nav-arrow prev" onclick="prevSlide()">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </span>
+                    <span class="nav-arrow" onclick="nextSlide()">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 幻灯片 3: 第一章 - 页2 -->
+    <section class="slide-container" id="slide-2" data-index="2">
+        <div class="slide-content">
+            <div class="chapter-indicator fade-up">第一章 1.1 核心原理</div>
+
+            <h2 class="display-title serif fade-up delay-100" style="font-size: 2.4rem;">
+                1.1 核心原理：大模型是<span class="highlight-bg">"超级概率接龙机"</span>，而非"专家"
+            </h2>
+
+            <div class="fade-up delay-200" style="margin-top: 2rem; max-width: 900px;">
+                <p class="lead-text mb-6">
+                    请彻底忘掉电影里全知全能的人工智能形象。当前的大语言模型（LLM），其核心运作机制是一个基于海量文本训练而成的<span class="highlight-underline">"下一个词预测器"</span>。
+                </p>
+
+                <h3 class="text-xl font-medium mb-4 serif">它的"思考"过程</h3>
+                <ol class="content-list" style="list-style: decimal; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 0.5rem;">接收你的<span class="">输入（提示词）</span></li>
+                    <li style="margin-bottom: 0.5rem;">将输入转换为<span class="">数学模型可理解的数值（Token）</span></li>
+                    <li style="margin-bottom: 0.5rem;">在其庞大的参数网络中，进行<span class="highlight-bg">天文数字般的概率计算</span>，预测在它所见过的所有文本模式中，哪一个词最有可能接在当前位置之后</li>
+                    <li style="margin-bottom: 0.5rem;">输出该词，并将其作为新输入的一部分，<span class="highlight-underline">循环往复</span>，生成完整回答</li>
+                </ol>
+            </div>
+
+            <div class="slide-footer">
+                <span>02 / 10</span>
+                <div class="nav-arrows">
+                    <span class="nav-arrow prev" onclick="prevSlide()">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </span>
+                    <span class="nav-arrow" onclick="nextSlide()">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 幻灯片 4: 第一章 - 页3 -->
+    <section class="slide-container" id="slide-3" data-index="3">
+        <div class="slide-content">
+            <div class="chapter-indicator fade-up">第一章 1.2 真相</div>
+
+            <h2 class="display-title serif fade-up delay-100" style="font-size: 2.4rem;">
+                1.2 真相：<span class="highlight-underline">概率模仿</span>，而非理解
+            </h2>
+
+            <div class="content-grid fade-up delay-200" style="margin-top: 2rem;">
+                <div>
+                    <div class="quote-block" style="font-size: 1.4rem;">
+                        当它说"美联储加息可能导致市场波动"时，它<span class="highlight-underline">并不理解</span>"美联储"、"加息"、"市场"的经济学含义。它只是在<span class="highlight-bg">模仿</span>成千上万篇财经文章中，在类似语境下<span class="highlight-bg">最常出现的词句组合</span>。
+                    </div>
+                </div>
+                <div>
+                    <p class="lead-text mb-6">
+                        它追求的是统计学上的<span class="highlight-underline">"逼真"</span>，而非事实上的<span class="highlight-underline">"真实"</span>。这个真相，就是所谓<span class="highlight-bg">提示词工程</span>能生效的核心逻辑，也就是入门教程部分的核心出发点。
+                    </p>
+
+                    <div class="bg-gray-50 p-6 rounded-sm" style="border-left: 4px solid var(--accent);">
+                        <p class="lead-text mb-4" style="font-style: italic;">
+                            另一个可能的<span class="">残酷真相</span>：人类的智慧，本质上可能也是这样的，<span class="highlight-underline">智慧是从概率中涌现的</span>。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <span>03 / 10</span>
+                <div class="nav-arrows">
+                    <span class="nav-arrow prev" onclick="prevSlide()">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </span>
+                    <span class="nav-arrow" onclick="nextSlide()">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 幻灯片 5: 第一章 - 页4 -->
+    <section class="slide-container" id="slide-4" data-index="4">
+        <div class="slide-content">
+            <div class="chapter-indicator fade-up">第一章 1.3 缺陷一</div>
+
+            <h2 class="display-title serif fade-up delay-100" style="font-size: 2.4rem;">
+                1.3 你必须敬畏的三大<span class="highlight-bg">"设计缺陷"</span>
+            </h2>
+
+            <p class="section-subtitle fade-up delay-200">
+                基于以上本质，所有大模型都共享以下核心局限，这是所有高级用法必须绕开的<span class="highlight-underline">"暗礁"</span>
+            </p>
+
+            <div class="fade-up delay-300" style="margin-top: 2rem; max-width: 900px;">
+                <div class="text-lg uppercase tracking-widest mb-4" style="color: var(--accent); font-weight: 600;">缺陷一："幻觉"——一本正经地胡说八道</div>
+
+                <h3 class="text-xl font-medium mb-4 serif">表现</h3>
+                <ul class="content-list">
+                    <li>信誓旦旦地<span class="highlight-underline">编造数据</span>（如"某公司2023年净利润同比增长150%"）</li>
+                    <li><span class="highlight-underline">杜撰专家观点</span></li>
+                    <li><span class="highlight-underline">混淆概念</span>（如将"量化宽松"与"财政赤字货币化"混为一谈）</li>
+                </ul>
+
+                <div class="quote-block" style="margin-top: 2rem;">
+                    你的第一道防线：<span class="highlight-bg">无条件执行事实核验</span>。AI是才华横溢却爱编故事的实习生，你必须是那个<span class="highlight-underline">严格把关的主编</span>。所有数据、引述、结论，都必须有<span class="">可追溯的可靠来源</span>。
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <span>04 / 10</span>
+                <div class="nav-arrows">
+                    <span class="nav-arrow prev" onclick="prevSlide()">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </span>
+                    <span class="nav-arrow" onclick="nextSlide()">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 幻灯片 6: 第一章 - 页5 -->
+    <section class="slide-container" id="slide-5" data-index="5">
+        <div class="slide-content">
+            <div class="chapter-indicator fade-up">第一章 1.4 缺陷二</div>
+
+            <h2 class="display-title serif fade-up delay-100" style="font-size: 2.4rem;">
+                1.3 你必须敬畏的三大<span class="highlight-bg">"设计缺陷"</span>
+            </h2>
+
+            <p class="section-subtitle fade-up delay-200">
+                基于以上本质，所有大模型都共享以下核心局限，这是所有高级用法必须绕开的<span class="highlight-underline">"暗礁"</span>
+            </p>
+
+             <div class="fade-up delay-300" style="margin-top: 2rem; max-width: 900px;">
+                <div>
+                    <div class="text-lg uppercase tracking-widest mb-4" style="color: var(--accent); font-weight: 600;">缺陷二：有限的"工作记忆"（上下文窗口）</div>
+
+                    <h3 class="text-xl font-medium mb-4 serif">核心比喻</h3>
+                    <p class="lead-text mb-6">
+                        AI的"大脑"就像一块<span class="highlight-bg">大小固定的白板</span>。你与它的整个对话历史都写在这块白板上。当对话（上下文）过长，写满白板时，<span class="highlight-underline">最早写上去的内容就会被擦除</span>，为新的内容腾出空间。
+                    </p>
+
+                    <h3 class="text-xl font-medium mb-4 serif">表现</h3>
+                    <ul class="content-list">
+                        <li>让它总结一份<span class="">50页的PDF</span>，它可能只记住了最后10页的内容</li>
+                        <li>一篇长文写到后半部分，它可能已经<span class="highlight-underline">忘记了你在开头设定的核心论点</span></li>
+                        <li>这是制约AI处理复杂任务的<span class="highlight-underline">根本瓶颈</span>，也是后面进阶教程部分的全部内容的出发点</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <span>05 / 10</span>
+                <div class="nav-arrows">
+                    <span class="nav-arrow prev" onclick="prevSlide()">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </span>
+                    <span class="nav-arrow" onclick="nextSlide()">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 幻灯片 7: 第一章 - 页6 -->
+    <section class="slide-container" id="slide-6" data-index="6">
+        <div class="slide-content">
+            <div class="chapter-indicator fade-up">第一章 1.5 缺陷三</div>
+
+
+            <h2 class="display-title serif fade-up delay-100" style="font-size: 2.4rem;">
+                1.3 你必须敬畏的三大<span class="highlight-bg">"设计缺陷"</span>
+            </h2>
+
+
+             <div class="fade-up delay-300" style="margin-top: 2rem; max-width: 900px;">
+                <div>
+                    <div class="text-lg uppercase tracking-widest mb-4" style="color: var(--accent); font-weight: 600;">缺陷三：没有"专业灵魂"与"价值判断"</div>
+
+
+                    <p class="lead-text mb-6">
+                        它可以写出一篇结构完整、数据准确、语句通顺的行情分析，但读起来<span class="">冰冷、中庸</span>、缺乏你独特的<span class="highlight-bg">视角、经验和温度</span>。它无法做出真正基于价值观的取舍（比如，如何在"揭示风险"和"保持读者信心"间取得你特有的平衡）。
+                    </p>
+
+                    <div class="quote-block" style="margin-top: 2rem;">
+                        你的终极使命：<span class="highlight-bg">为工具注入灵魂</span>。这是区分<span class="highlight-underline">"AI生成的内容"</span>和<span class="highlight-underline">"你借助AI创作的作品"</span>的唯一标准，也是我们使用AI辅助创作的核心理念。
+                    </div>
+
+                    <div class="bg-gray-50 p-6 rounded-sm" style="margin-top: 2rem; border-left: 4px solid var(--accent);">
+                        <p class="text-sm uppercase tracking-widest mb-3" style="color: var(--stone);">本章小结</p>
+                        <p class="lead-text">
+                            接受其<span class="">概率本质</span>，警惕其<span class="highlight-underline">幻觉与失忆</span>，明确其<span class="highlight-underline">无法替代人类专业判断的边界</span>。自此，我们才能开始安全、高效地驾驭它。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <span>06 / 10</span>
+                <div class="nav-arrows">
+                    <span class="nav-arrow prev" onclick="prevSlide()">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </span>
+                    <span class="nav-arrow" onclick="nextSlide()">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 幻灯片 8: 第二章 - 页1 -->
+    <section class="slide-container" id="slide-7" data-index="7">
+        <div class="slide-content">
+            <div class="chapter-indicator fade-up">第二章 1/4</div>
+
+            <h2 class="display-title serif fade-up delay-100">
+                从入门到基础精通<br>提示词工程：<span class="highlight-underline">"无效沟通"</span>到<span class="highlight-underline">"精准协作"</span>
+            </h2>
+
+            <div class="fade-up delay-200">
+                <div class="quote-block" style="margin-top: 2rem;">
+                    与AI协作，不是"聊天"，而是<span class="highlight-bg">"撰写一份机器可执行的精密说明书"</span>。模糊的指令得到模糊的结果，精准的导航抵达预设的终点。
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <span>07 / 13</span>
+                <div class="nav-arrows">
+                    <span class="nav-arrow prev" onclick="prevSlide()">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </span>
+                    <span class="nav-arrow" onclick="nextSlide()">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 幻灯片 9: 第二章 - 页2 -->
+    <section class="slide-container" id="slide-8" data-index="8">
+        <div class="slide-content">
+            <div class="chapter-indicator fade-up">第二章 2/5</div>
+
+            <h2 class="display-title serif fade-up delay-100" style="font-size: 2.4rem;">
+                2.1 核心法则：<span class="highlight-bg">信息即权力，细节即质量</span>
+            </h2>
+
+            <div class="content-grid fade-up delay-200" style="margin-top: 2rem;">
+                <div>
+                    <div class="bg-gray-50 p-6 rounded-sm" style="border-left: 4px solid #ef4444;">
+                        <p class="text-sm uppercase tracking-widest mb-3" style="color: var(--stone);">❌ 失败的对话</p>
+                        <p class="lead-text mb-2">你："写一篇关于光伏行业的分析。"</p>
+                        <p class="text-sm text-stone">AI：（生成一篇泛泛而谈、观点陈旧、没有目标读者的平庸文章。）</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="bg-gray-50 p-6 rounded-sm" style="border-left: 4px solid #22c55e;">
+                        <p class="text-sm uppercase tracking-widest mb-3" style="color: var(--stone);">✅ 成功的导航</p>
+                        <p class="lead-text">你：构建出一个<span class="highlight-underline">多维度的指令空间</span>。从系统提示词，到中间的结构化的清晰指令，再到少量轮次的信息补充。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-block fade-up delay-300" style="margin-top: 2rem;">
+                记住，你给得信息越多，越准，AI给你的也会越准。而所有的使用技巧，都在于如何<span class="highlight-bg">更快速便捷、更准确精妙</span>地给AI信息。
+            </div>
+
+            <div class="slide-footer">
+                <span>08 / 13</span>
+                <div class="nav-arrows">
+                    <span class="nav-arrow prev" onclick="prevSlide()">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </span>
+                    <span class="nav-arrow" onclick="nextSlide()">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 幻灯片 10: 第二章 - 页3 -->
+    <section class="slide-container" id="slide-9" data-index="9">
+        <div class="slide-content">
+            <div class="chapter-indicator fade-up">第二章 3/5</div>
+
+            <h2 class="display-title serif fade-up delay-100" style="font-size: 2.4rem;">
+                2.2 构建你的<span class="highlight-bg">"职业分身"</span>：系统提示词深度解析
+            </h2>
+
+            <div class="content-grid fade-up delay-200" style="margin-top: 2rem;">
+                <div>
+                    <p class="lead-text mb-4" style="font-size: 0.95rem;">
+                        系统提示词是AI的<span class="highlight-underline">人格设定</span>、<span class="highlight-underline">岗位职责说明书</span>和<span class="highlight-underline">创作规范手册</span>。一次精心编写，长期稳定复用。
+                    </p>
+
+                    <h3 class="text-lg font-medium mb-3 serif" style="font-size: 1.1rem;">案例：申万宏源小红书笔记创作</h3>
+
+                    <p class="mb-3" style="font-size: 0.9rem; line-height: 1.6;">
+                        以下是一个高度拟真的完整示例，总字符数约<span class="highlight-bg">5000+</span>
+                    </p>
+
+                    <div class="bg-gray-50 p-4 rounded-sm" style="margin-top: 1rem; border-left: 4px solid var(--accent);">
+                        <p class="mb-3" style="font-size: 0.9rem; line-height: 1.6;">
+                            通过观察案例，提示词结构包含：
+                        </p>
+
+                        <ul class="content-list" style="font-size: 0.9rem; line-height: 1.6;">
+                            <li><span class="highlight-bg">角色</span> - AI身份和专业背景</li>
+                            <li><span class="highlight-bg">任务目标</span> - 明确工作内容</li>
+                            <li><span class="highlight-bg">创作要求</span> - 工作标准和规范</li>
+                            <li><span class="highlight-bg">主题适配</span> - 不同类型策略</li>
+                            <li><span class="highlight-bg">模仿指南</span> - 确保风格一致性</li>
+                            <li><span class="highlight-bg">输出格式</span> - 标准化结构</li>
+                        </ul>
+
+                        <p style="font-size: 0.85rem; margin-top: 1.5rem; line-height: 1.6;">
+                            这些模块<span class="highlight-underline">均会对AI输出质量产生显著影响</span>。
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div style="position: relative; height: 100%; display: flex; flex-direction: column;">
+                        <button
+                            id="copy-prompt-btn"
+                            onclick="copyPromptToClipboard()"
+                            style="position: absolute; top: 1rem; right: 1rem; z-index: 10; padding: 0.5rem 1rem; background-color: var(--accent); color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem; transition: all 0.3s ease;"
+                            onmouseover="this.style.opacity='0.8'"
+                            onmouseout="this.style.opacity='1'"
+                        >
+                            复制提示词
+                        </button>
+                        <div class="bg-gray-50 p-6 rounded-sm" style="flex: 1; max-height: 55vh; overflow-y: auto; font-family: 'Courier New', monospace; font-size: 0.75rem; line-height: 1.4;">
+                            <div id="prompt-content-22" style="white-space: pre-wrap;">
+                                <p style="color: var(--stone); text-align: center; padding: 2rem;">正在加载提示词文件...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <span>09 / 14</span>
+                <div class="nav-arrows">
+                    <span class="nav-arrow prev" onclick="prevSlide()">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </span>
+                    <span class="nav-arrow" onclick="nextSlide()">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 幻灯片 11: 第二章 - 页4 -->
+    <section class="slide-container" id="slide-10" data-index="10">
+        <div class="slide-content">
+            <div class="chapter-indicator fade-up">第二章 4/5</div>
+
+            <h2 class="display-title serif fade-up delay-100" style="font-size: 2.2rem;">
+                2.3 风格从何而来？<span class="highlight-underline">"元提示词"</span>的妙用
+            </h2>
+
+            <div class="content-grid fade-up delay-200" style="margin-top: 2rem;">
+                <div>
+                    <p class="lead-text mb-4" style="font-size: 0.95rem;">
+                        系统提示词中超过5000字的"创作要求"部分很难凭空编写。可以通过<span class="highlight-bg">"元提示词"</span>，让AI分析爆款内容风格后，自动总结提炼出。
+                    </p>
+
+                    <div class="bg-gray-50 p-4 rounded-sm mb-3" style="border-left: 4px solid var(--accent);">
+                        <p class="text-sm uppercase tracking-widest mb-2" style="color: var(--stone);">元提示词示例：风格提取器</p>
+                        <p class="mb-2" style="font-size: 0.9rem; line-height: 1.6;">请你扮演一位"顶尖财经内容策划分析师"，深度解构财经爆款文章，提炼出可复用于AI系统提示词的<span class="highlight-underline">"风格要素库"</span>。</p>
+
+                        <p class="text-sm mb-2" style="color: var(--charcoal); font-size: 0.85rem;"><strong>分析维度：</strong></p>
+                        <ul class="content-list" style="font-size: 0.9rem; line-height: 1.6;">
+                            <li>人格与口吻</li>
+                            <li>开头策略</li>
+                            <li>结构框架</li>
+                            <li>语言风格</li>
+                            <li>情绪曲线</li>
+                            <li>结尾设计</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gray-50 p-4 rounded-sm" style="border-left: 4px solid var(--accent);">
+                        <p class="mb-3" style="font-size: 0.9rem; line-height: 1.6;">
+                            元提示词的<span class="highlight-bg">核心价值</span>在于：
+                        </p>
+
+                        <ul class="content-list" style="font-size: 0.9rem; line-height: 1.6;">
+                            <li><span class="highlight-underline">自动化分析</span> - 让AI代替人工总结风格特征</li>
+                            <li><span class="highlight-underline">结构化输出</span> - 生成可直接使用的提示词模块</li>
+                            <li><span class="highlight-underline">精准模仿</span> - 从泛化语料升级为个人风格复制</li>
+                            <li><span class="highlight-underline">快速迭代</span> - 分析新爆款，持续优化提示词</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <div style="position: relative; height: 100%; display: flex; flex-direction: column;">
+                        <div class="bg-gray-50 p-6 rounded-sm" style="flex: 1; max-height: 55vh; overflow-y: auto; font-family: 'Courier New', monospace; font-size: 0.8rem; line-height: 1.5;">
+                            <p style="color: var(--accent); margin-bottom: 1rem;"><strong>## 元提示词完整示例</strong></p>
+
+                            <p style="margin-bottom: 0.8rem;"><strong>角色设定：</strong></p>
+                            <p style="margin-left: 1rem; margin-bottom: 1rem;">你是一位顶尖财经内容策划分析师，擅长深度解构内容风格，提炼可复制的风格要素。</p>
+
+                            <p style="margin-bottom: 0.8rem;"><strong>任务目标：</strong></p>
+                            <p style="margin-left: 1rem; margin-bottom: 1rem;">分析我提供的3篇财经爆款文章，生成一份完整的"风格要素库"报告，可直接用于AI系统提示词。</p>
+
+                            <p style="margin-bottom: 0.8rem;"><strong>分析框架：</strong></p>
+
+                            <p style="margin-left: 1rem; margin-bottom: 0.5rem;"><strong>1. 宏观风格分析</strong></p>
+                            <ul style="margin-left: 2rem; margin-bottom: 0.8rem; font-size: 0.75rem;">
+                                <li>思维模式：逻辑结构、思考方式、观察视角</li>
+                                <li>价值取向：核心关注、评价标准、立场倾向</li>
+                                <li>表达意图：写作目的、预期效果、读者关系</li>
+                                <li>整体架构：结构模式、发展脉络、主次安排</li>
+                            </ul>
+
+                            <p style="margin-left: 1rem; margin-bottom: 0.5rem;"><strong>2. 微观风格分析</strong></p>
+                            <ul style="margin-left: 2rem; margin-bottom: 0.8rem; font-size: 0.75rem;">
+                                <li>语言特征：句式、词汇、修辞手法</li>
+                                <li>结构特征：段落长度、过渡风格、层次模式</li>
+                                <li>叙述特征：视角、时间线、态度</li>
+                                <li>情感特征：强度、表达方式、语调</li>
+                            </ul>
+
+                            <p style="margin-left: 1rem; margin-bottom: 0.5rem;"><strong>3. 独特性识别</strong></p>
+                            <ul style="margin-left: 2rem; margin-bottom: 0.8rem; font-size: 0.75rem;">
+                                <li>标志性短语：作者常用表达</li>
+                                <li>意象系统：核心比喻和象征</li>
+                                <li>文化引用：典故、知识领域</li>
+                            </ul>
+
+                            <p style="margin-left: 1rem; margin-bottom: 0.5rem;"><strong>4. 综合模仿指南</strong></p>
+                            <ul style="margin-left: 2rem; margin-bottom: 0.8rem; font-size: 0.75rem;">
+                                <li>必备元素：必须模仿的风格特征</li>
+                                <li>重要元素：重要但可灵活调整的特征</li>
+                                <li>模仿步骤：从构思到成文的完整流程</li>
+                                <li>常见误区：需要避免的模仿错误</li>
+                            </ul>
+
+                            <p style="color: var(--stone); font-style: italic; margin-top: 1.5rem; font-size: 0.75rem;">
+                                使用方法：将此元提示词发送给AI，然后粘贴3篇你的爆款文章，AI将自动生成详细的风格分析报告。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <span>10 / 14</span>
+                <div class="nav-arrows">
+                    <span class="nav-arrow prev" onclick="prevSlide()">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </span>
+                    <span class="nav-arrow" onclick="nextSlide()">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 幻灯片 12: 第二章 - 页5 (2.4 工具落地) -->
+    <section class="slide-container" id="slide-11" data-index="11">
+        <div class="slide-content">
+            <div class="chapter-indicator fade-up">第二章 5/5</div>
+
+            <h2 class="display-title serif fade-up delay-100" style="font-size: 2.2rem;">
+                2.4 工具落地：用<span class="highlight-bg">"元宝分组功能"</span>固化专业分身
+            </h2>
+
+            <div class="content-grid fade-up delay-200" style="margin-top: 1.5rem;">
+                <div>
+                    <p class="lead-text mb-4" style="font-size: 1.1rem;">
+                        理论需要载体。强烈推荐使用<span class="highlight-underline">"元宝"</span>等支持长系统提示词的平台。其"对话分组"功能是实现上述理念的绝佳工具。
+                    </p>
+
+                    <div class="bg-gray-50 p-5 rounded-sm mb-4" style="border-left: 4px solid var(--accent);">
+                        <p class="text-sm uppercase tracking-widest mb-2" style="color: var(--stone);">为何是元宝？</p>
+                        <p class="lead-text" style="font-size: 1.05rem;">支持高达<span class="highlight-bg">6000字符</span>的系统提示词配置，足以容纳我们编写的详尽设定。</p>
+                    </div>
+
+                    <h3 class="text-xl font-medium mb-3 serif">如何操作？</h3>
+                    <ol class="content-list" style="font-size: 1.05rem;">
+                        <li>在元宝中创建一个新分组，命名为<span class="highlight-underline">"申万宏源-小红书投教"</span></li>
+                        <li>将2.2节中完整的系统提示词，复制粘贴到该分组的"系统指令"区域</li>
+                        <li>保存分组</li>
+                    </ol>
+
+                    <div class="quote-block" style="margin-top: 1.5rem; font-size: 1.2rem;">
+                        日后使用：每当需要写小红书投教笔记时，只需切换到"申万宏源-小红书投教"分组，然后输入简单的任务指令，AI就会自动代入"申万宏源财富管理"的人格和全部创作规范，生成一篇风格高度一致、质量稳定的初稿。
+                    </div>
+
+                    <div class="bg-gray-50 p-5 rounded-sm" style="margin-top: 2rem; border-left: 4px solid var(--accent);">
+                        <p class="text-sm uppercase tracking-widest mb-2" style="color: var(--accent); font-weight: 600;">本章行动点</p>
+                        <p class="lead-text" style="font-size: 1.05rem;">
+                            立即选择你最主要的创作场景，按照"角色-任务-风格-格式-示例"的结构，撰写你的第一份系统提示词。然后，使用元提示词分析你的历史佳作，不断将提炼出的"灵魂要素"补充进去。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <span>11 / 14</span>
+                <div class="nav-arrows">
+                    <span class="nav-arrow prev" onclick="prevSlide()">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </span>
+                    <span class="nav-arrow" onclick="nextSlide()">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 幻灯片 13: 第三章 - 页1 -->
+    <section class="slide-container" id="slide-12" data-index="12">
+        <div class="slide-content">
+            <div class="chapter-indicator fade-up">第三章 1/4</div>
+
+            <h2 class="display-title serif fade-up delay-100">
+                进阶破局 —— 三大范式破解<span class="highlight-underline">上下文困境</span><br>打造<span class="highlight-bg">工业级流水线</span>
+            </h2>
+
+            <div class="fade-up delay-200">
+                <p class="section-subtitle" style="margin-bottom: 2rem;">
+                    当你已熟练掌握提示词和结构化地表达来提升AI产出的内容质量后，你将进一步碰到2个问题
+                </p>
+
+                <div class="content-grid" style="margin-top: 2rem;">
+                    <div>
+                        <div class="bg-gray-50 p-5 rounded-sm mb-4" style="border-left: 4px solid var(--accent);">
+                            <div class="text-lg font-medium mb-2" style="color: var(--accent);">问题1：信息缺失</div>
+                            <p class="lead-text" style="font-size: 1.05rem;">
+                                部分参考内容无法精准获取，如今日的行情、今日的财经资讯等。通过AI应用内置的<span class="highlight-underline">联网搜索组件</span>，无法准确地获取到你想要的素材。
+                            </p>
+                        </div>
+
+                        <div class="bg-gray-50 p-5 rounded-sm" style="border-left: 4px solid var(--accent);">
+                            <div class="text-lg font-medium mb-2" style="color: var(--accent);">问题2：上下文不足</div>
+                            <p class="lead-text" style="font-size: 1.05rem;">
+                                单次对话的<span class="highlight-underline">"白板"不够用</span>。当你的流程越来越长，一次性产出的内容无法满足你的全链路诉求。从<span class="highlight-bg">选题-创作-成稿-审校-可视化</span>，有可能一次性完成吗？
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quote-block fade-up delay-300" style="font-size: 1.2rem; margin-top: 2rem;">
+                    此时，你需要为AI搭建<span class="highlight-bg">外部脚手架</span>，也就是2025年最火的一些Agent理念。接下来要给大家介绍<span class="highlight-bg">三大范式</span>，能解决从"信息缺失"到"流程自动化"的进阶问题。
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <span>12 / 17</span>
+                <div class="nav-arrows">
+                    <span class="nav-arrow prev" onclick="prevSlide()">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </span>
+                    <span class="nav-arrow" onclick="nextSlide()">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 幻灯片 14: 第三章 - 页2 -->
+    <section class="slide-container" id="slide-13" data-index="13">
+        <div class="slide-content">
+            <div class="chapter-indicator fade-up">第三章 2/4</div>
+
+            <h2 class="display-title serif fade-up delay-100" style="font-size: 2.2rem;">
+                3.1 范式一：<span class="highlight-bg">知识库检索</span> —— 为AI装备"外部硬盘"
+            </h2>
+
+            <div class="content-grid fade-up delay-200" style="margin-top: 1.5rem;">
+                <div>
+                    <p class="lead-text mb-4" style="font-size: 1.1rem;">
+                        <strong>它是什么：</strong>将你的私有、静态知识文件（公司研报、内部数据、白皮书、法律法规、经典文章合集）上传到平台形成资料库。AI在回答问题时，会先主动查询这个资料库，并基于查询结果生成答案。
+                    </p>
+
+                    <div class="bg-gray-50 p-5 rounded-sm mb-4" style="border-left: 4px solid var(--accent);">
+                        <p class="text-sm uppercase tracking-widest mb-2" style="color: var(--stone);">典型工具</p>
+                        <p class="lead-text" style="font-size: 1.05rem;">
+                            <span class="highlight-underline">腾讯IMA</span>、<span class="highlight-underline">GET笔记</span>、飞书的"知识库"功能等。联网搜索本质上也是一种实时、公开的知识库检索。
+                        </p>
+                    </div>
+
+                    <h3 class="text-xl font-medium mb-3 serif">深度场景与应用</h3>
+
+                    <div class="bg-gray-50 p-5 rounded-sm mb-4" style="margin-top: 1.5rem;">
+                        <p class="text-sm uppercase tracking-widest mb-2" style="color: var(--accent); font-weight: 600;">用法</p>
+                        <p class="lead-text mb-3" style="font-size: 1.05rem;">
+                            在腾讯IMA或GET笔记中，你可以维护一个<span class="highlight-bg">"个人创作知识库"</span>，里面分门别类存放你的观点摘要、金句库、案例集、数据模板。
+                        </p>
+                        <p class="text-sm text-stone mb-2">适用场景：</p>
+                        <ul class="content-list" style="font-size: 1rem;">
+                            <li>你的个人投资风格和观点</li>
+                            <li>约束性的内容如合规要求</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gray-50 p-5 rounded-sm" style="border-left: 4px solid var(--accent); margin-top: 1.5rem;">
+                        <p class="text-sm uppercase tracking-widest mb-2" style="color: var(--accent); font-weight: 600;">革命性工作流</p>
+                        <p class="lead-text" style="font-size: 1.05rem;">
+                            你可以用<span class="highlight-underline">语音输入</span>，对着AI说两三分钟，零散地讲讲今天想写的大盘看法、几个观察到的现象。AI会先识别你的语音，转为文字，然后<span class="highlight-bg">自动去你的知识库里检索匹配的观点和案例</span>，最后整合生成一篇结构清晰、风格匹配、内容有据的完整文章草稿。这直接将<span class="highlight-underline">"构思-检索-起草"</span>三步合一。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-grid fade-up delay-300" style="margin-top: 1.5rem;">
+                <div>
+                    <div class="bg-gray-50 p-4 rounded-sm mb-3">
+                        <p class="text-sm font-medium mb-1" style="color: var(--charcoal);">✅ 优势</p>
+                        <p class="text-sm text-stone">根本上抑制"幻觉"，输出内容溯源性强，专业性极大提升。</p>
+                    </div>
+
+                    <div class="bg-gray-50 p-4 rounded-sm mb-3">
+                        <p class="text-sm font-medium mb-1" style="color: var(--charcoal);">❌ 劣势</p>
+                        <p class="text-sm text-stone">知识库需要人工维护和更新；对非结构化信息处理能力有限。</p>
+                    </div>
+
+                    <div class="bg-gray-50 p-4 rounded-sm">
+                        <p class="text-sm font-medium mb-1" style="color: var(--accent);">💎 核心价值</p>
+                        <p class="text-sm">一定程度上解决了<span class="highlight-underline">"观点从哪里来"</span>的问题，让AI的产出有根有据。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <span>13 / 17</span>
+                <div class="nav-arrows">
+                    <span class="nav-arrow prev" onclick="prevSlide()">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </span>
+                    <span class="nav-arrow" onclick="nextSlide()">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 幻灯片 15: 第三章 - 页3 -->
+    <section class="slide-container" id="slide-14" data-index="14">
+        <div class="slide-content">
+            <div class="chapter-indicator fade-up">第三章 3/4</div>
+
+            <h2 class="display-title serif fade-up delay-100" style="font-size: 2.2rem;">
+                3.2 范式二：<span class="highlight-bg">工作流编排</span> —— 将创作"流程自动化、工程化"
+            </h2>
+
+            <div class="content-grid fade-up delay-200" style="margin-top: 1.5rem;">
+                <div>
+                    <p class="lead-text mb-4" style="font-size: 1.1rem;">
+                        <strong>它是什么：</strong>把一项复杂的创作任务拆解成一系列定义好的、可自动执行的步骤（节点），像编程一样构建一个<span class="highlight-underline">可视化的执行流水线</span>。
+                    </p>
+
+                    <div class="bg-gray-50 p-5 rounded-sm mb-4" style="border-left: 4px solid var(--accent);">
+                        <p class="text-sm uppercase tracking-widest mb-2" style="color: var(--stone);">典型工具</p>
+                        <p class="lead-text" style="font-size: 1.05rem;">
+                            <span class="highlight-underline">扣子（Coze）</span>的"工作流"功能是免费的C端产品的典范。具备条件的，也可以尝试部署N8N、Dify等工作流类的Agent产品。
+                        </p>
+                    </div>
+
+                    <h3 class="text-xl font-medium mb-3 serif">深度解析：与传统方式的区别</h3>
+
+                    <div class="bg-gray-50 p-5 rounded-sm mb-4" style="margin-top: 1.5rem;">
+                        <p class="text-sm uppercase tracking-widest mb-2" style="color: var(--accent); font-weight: 600;">工程化能力</p>
+                        <p class="lead-text mb-3" style="font-size: 1.05rem;">
+                            前述的知识库、提示词，都解决不了一个核心问题——<span class="highlight-bg">如何获取实时、准确、结构化的市场行情数据</span>？
+                        </p>
+                        <p class="lead-text" style="font-size: 1.05rem;">
+                            在工作流中，你可以在特定节点调用<span class="highlight-underline">API接口</span>。例如：
+                        </p>
+                        <ul class="content-list" style="font-size: 1rem;">
+                            <li>第一个节点调用财经数据API，获取某指数当日涨跌幅、成交额、资金流向等</li>
+                            <li>第二个节点将数据结果传递给AI节点进行分析</li>
+                            <li>第三个节点将分析结果格式化输出</li>
+                        </ul>
+                        <p class="text-sm text-stone mt-2" style="font-style: italic;">
+                            这意味着，你通过工程化手段，固定了"数据来源"这个最关键的输入，从而极大提升了产出的稳定性和准确性。
+                        </p>
+                    </div>
+
+                    <div class="bg-gray-50 p-5 rounded-sm" style="border-left: 4px solid var(--accent); margin-top: 1.5rem;">
+                        <p class="text-sm uppercase tracking-widest mb-2" style="color: var(--accent); font-weight: 600;">复杂逻辑处理</p>
+                        <p class="lead-text mb-3" style="font-size: 1.05rem;">
+                            工作流支持<span class="highlight-underline">条件分支</span>（如果A股上涨，则走"乐观分析"分支；如果下跌，则走"风险解析"分支）、<span class="highlight-underline">循环</span>（批量处理多只股票）、<span class="highlight-underline">多步骤串联</span>（数据获取→初步分析→深度加工→多格式发布）。
+                        </p>
+                        <p class="text-sm text-stone">
+                            这不仅是破解了上下文长度的局限（每一步都有独立的长度可用），更是实现了复杂创作任务的<span class="highlight-bg">标准化、自动化与稳定性提升</span>。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-grid fade-up delay-300" style="margin-top: 1.5rem;">
+                <div>
+                    <div class="bg-gray-50 p-4 rounded-sm mb-3">
+                        <p class="text-sm font-medium mb-1" style="color: var(--charcoal);">✅ 优势</p>
+                        <p class="text-sm text-stone">流程固化，稳定可靠，可处理复杂逻辑，能对接外部系统。</p>
+                    </div>
+
+                    <div class="bg-gray-50 p-4 rounded-sm mb-3">
+                        <p class="text-sm font-medium mb-1" style="color: var(--charcoal);">❌ 劣势</p>
+                        <p class="text-sm text-stone">搭建需要一定的逻辑思维和编程能力，灵活性相对较低。</p>
+                    </div>
+
+                    <div class="bg-gray-50 p-4 rounded-sm">
+                        <p class="text-sm font-medium mb-1" style="color: var(--accent);">💎 核心价值</p>
+                        <p class="text-sm">解决了<span class="highlight-underline">"如何稳定、自动地执行复杂任务"</span>的问题。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <span>14 / 17</span>
+                <div class="nav-arrows">
+                    <span class="nav-arrow prev" onclick="prevSlide()">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </span>
+                    <span class="nav-arrow" onclick="nextSlide()">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 幻灯片 16: 第三章 - 页4 -->
+    <section class="slide-container" id="slide-15" data-index="15">
+        <div class="slide-content">
+            <div class="chapter-indicator fade-up">第三章 4/4</div>
+
+            <h2 class="display-title serif fade-up delay-100" style="font-size: 2.2rem;">
+                3.3 范式三：<span class="highlight-bg">Skill</span> —— "集大成"的专属AI技能包
+            </h2>
+
+            <div class="content-grid fade-up delay-200" style="margin-top: 1.5rem;">
+                <div>
+                    <p class="lead-text mb-4" style="font-size: 1.1rem;">
+                        <strong>它是什么：</strong>Skill是一个更高阶的封装。它不是一段提示词，而是一个<span class="highlight-bg">"压缩文件夹"</span>。里面集成了：系统提示词（灵魂）、知识库（记忆）、工作流脚本（能力）、甚至预设的对话开场白。
+                    </p>
+
+                    <h3 class="text-xl font-medium mb-3 serif">核心特性与先进性</h3>
+
+                    <div class="bg-gray-50 p-5 rounded-sm mb-3" style="border-left: 4px solid var(--accent);">
+                        <p class="text-sm uppercase tracking-widest mb-2" style="color: var(--accent); font-weight: 600;">1. 渐进式批注</p>
+                        <p class="lead-text" style="font-size: 1.05rem;">
+                            这是解决长上下文问题的另一个优雅方案。用户上传长文档，Skill可以<span class="highlight-underline">分段阅读、总结、提问、再基于你的回答深化分析</span>，像一个人一样与长文档"交互式"工作，而非一次性吞下。
+                        </p>
+                    </div>
+
+                    <div class="bg-gray-50 p-5 rounded-sm mb-3" style="border-left: 4px solid var(--accent);">
+                        <p class="text-sm uppercase tracking-widest mb-2" style="color: var(--accent); font-weight: 600;">2. 持久化记忆与本地文件系统</p>
+                        <p class="lead-text" style="font-size: 1.05rem;">
+                            高级Skill可以利用本地存储，<span class="highlight-underline">记住用户的偏好、历史对话的上下文要点</span>，实现真正的"长期记忆"，打破单次对话的隔离。
+                        </p>
+                    </div>
+
+                    <div class="bg-gray-50 p-5 rounded-sm mb-3" style="border-left: 4px solid var(--accent);">
+                        <p class="text-sm uppercase tracking-widest mb-2" style="color: var(--accent); font-weight: 600;">3. 综合性</p>
+                        <p class="lead-text" style="font-size: 1.05rem;">
+                            一个成熟的财经分析Skill，可以兼备<span class="highlight-bg">"检索最新研报（知识库）"</span>、<span class="highlight-bg">"计算技术指标（工作流API调用）"</span>、<span class="highlight-bg">"以投教口吻解读（系统提示词）"</span>全部能力。
+                        </p>
+                    </div>
+
+                    <div class="bg-gray-50 p-4 rounded-sm mb-4" style="margin-top: 1.5rem;">
+                        <p class="text-sm uppercase tracking-widest mb-2" style="color: var(--stone);">现状</p>
+                        <p class="text-sm" style="font-size: 1rem;">
+                            Skill范式自2025年12月份形成以来，已迅速成为<span class="highlight-underline">行业标准</span>。无论是使用扣子（Coze）的云端平台快速搭建，Claude Code、Kimi Code等TUI编程工具，Trea、Codebuddy等AI IDE，还是Open Claw等桌面级Agent，都已开始支持这一标准进行更深度的运用。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-grid fade-up delay-300" style="margin-top: 1.5rem;">
+                <div>
+                    <div class="bg-gray-50 p-4 rounded-sm mb-3">
+                        <p class="text-sm font-medium mb-1" style="color: var(--charcoal);">✅ 优势</p>
+                        <p class="text-sm text-stone">功能完备，用户体验统一，可复用和分发，代表现阶段AI运用Know-How的最终形态。</p>
+                    </div>
+
+                    <div class="bg-gray-50 p-4 rounded-sm mb-3">
+                        <p class="text-sm font-medium mb-1" style="color: var(--charcoal);">❌ 劣势</p>
+                        <p class="text-sm text-stone">创作门槛最高，需要综合运用前几种范式的知识。</p>
+                    </div>
+
+                    <div class="bg-gray-50 p-4 rounded-sm">
+                        <p class="text-sm font-medium mb-1" style="color: var(--accent);">💎 核心价值</p>
+                        <p class="text-sm">解决了<span class="highlight-underline">"如何打造一个功能完整、体验流畅、可分发复用的专属AI技能"</span>的问题。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 p-5 rounded-sm fade-up delay-400" style="margin-top: 2rem; border-left: 4px solid var(--accent);">
+                <p class="text-sm uppercase tracking-widest mb-3" style="color: var(--accent); font-weight: 600;">本章行动点</p>
+                <p class="lead-text" style="font-size: 1.05rem;">
+                    评估你的工作流。首先，尝试建立一个<span class="highlight-bg">"个人投资观点知识库"</span>，尝试通过一些笔记软件，进行碎片化的语音创作；其次，在扣子的技能商店，搜索并体验几个现成的<span class="highlight-underline">"市场热点分析"</span>和<span class="highlight-underline">"新媒体创作"</span>类型的Skill；最后，在扣子编程中，尝试接入免费的数据API，为自己的选股流程或投顾观点内容设计一个从简单到复杂的工作流或Skill，并持续迭代。
+                </p>
+            </div>
+
+            <div class="slide-footer">
+                <span>15 / 17</span>
+                <div class="nav-arrows">
+                    <span class="nav-arrow prev" onclick="prevSlide()">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </span>
+                    <span class="nav-arrow" onclick="nextSlide()">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 幻灯片 17: 第四章 - 灵魂论 -->
+    <section class="slide-container" id="slide-16" data-index="16">
+        <div class="slide-content">
+            <div class="chapter-indicator fade-up">第三章</div>
+            
+            <h2 class="display-title serif fade-up delay-100" style="font-size: 2.6rem;">
+                四大范式破解上下文困境<br>打造工业级流水线
+            </h2>
+            
+            <p class="section-subtitle fade-up delay-200">
+                当单次对话的"白板"不够用时，你需要为AI搭建外部脚手架
+            </p>
+            
+            <div class="grid grid-cols-4 gap-6 mt-8 fade-up delay-300">
+                <div class="border-t-2 border-charcoal pt-6">
+                    <div class="text-3xl font-light serif mb-2 text-accent">01</div>
+                    <h3 class="font-medium mb-3">知识库检索</h3>
+                    <p class="text-sm text-stone leading-relaxed mb-3">
+                        将你的私有研报、内部数据、法律法规上传到平台形成资料库。AI先查询资料库，再基于结果生成答案。
+                    </p>
+                    <div class="text-xs text-stone uppercase tracking-wider">IMA / 语雀AI</div>
+                </div>
+                
+                <div class="border-t-2 border-charcoal pt-6">
+                    <div class="text-3xl font-light serif mb-2 text-accent">02</div>
+                    <h3 class="font-medium mb-3">工作流编排</h3>
+                    <p class="text-sm text-stone leading-relaxed mb-3">
+                        将创作任务拆解为可视化执行流水线。可调用API获取实时行情数据，实现复杂逻辑自动化。
+                    </p>
+                    <div class="text-xs text-stone uppercase tracking-wider">扣子 Coze</div>
+                </div>
+                
+                <div class="border-t-2 border-charcoal pt-6">
+                    <div class="text-3xl font-light serif mb-2 text-accent">03</div>
+                    <h3 class="font-medium mb-3">Skill/智能体</h3>
+                    <p class="text-sm text-stone leading-relaxed mb-3">
+                        集大成的专属AI应用。集成系统提示词、知识库、工作流脚本，实现渐进式批注与持久化记忆。
+                    </p>
+                    <div class="text-xs text-stone uppercase tracking-wider">Claude / Cursor</div>
+                </div>
+                
+                <div class="border-t-2 border-charcoal pt-6">
+                    <div class="text-3xl font-light serif mb-2 text-accent">04</div>
+                    <h3 class="font-medium mb-3">语音创作</h3>
+                    <p class="text-sm text-stone leading-relaxed mb-3">
+                        用语音输入零散观点，AI自动检索知识库匹配案例，整合生成结构清晰、风格匹配的完整文章。
+                    </p>
+                    <div class="text-xs text-stone uppercase tracking-wider">效率革命</div>
+                </div>
+            </div>
+            
+            <div class="mt-12 p-6 bg-gray-50 rounded-sm fade-up delay-400">
+                <p class="text-sm leading-relaxed">
+                    <span class="font-medium">革命性工作流：</span> 
+                    你可以用语音输入，对着AI说两三分钟，讲讲今天的大盘看法、几个观察到的现象。AI会先识别语音转为文字，然后<span class="highlight-text">自动去你的知识库里检索匹配的观点和案例</span>，最后整合生成一篇结构清晰、风格匹配、内容有据的完整文章草稿。这直接将"构思-检索-起草"三步合一。
+                </p>
+            </div>
+            
+            <div class="slide-footer">
+                <span>12 / 14</span>
+                <div class="nav-arrows">
+                    <span class="nav-arrow prev" onclick="prevSlide()">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </span>
+                    <span class="nav-arrow" onclick="nextSlide()">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 幻灯片 17: 第四章 - 页1 -->
+    <section class="slide-container" id="slide-16" data-index="16">
+        <div class="slide-content">
+            <div class="chapter-indicator fade-up">第四章 1/7</div>
+
+            <h2 class="display-title serif fade-up delay-100">
+                灵魂论与生产力革命 —— 从<span class="highlight-underline">"工具使用者"</span>到<span class="highlight-bg">"策略大脑"</span>的终极蜕变
+            </h2>
+
+            <div class="fade-up delay-200">
+                <div class="quote-block" style="margin-top: 2rem; font-size: 1.3rem;">
+                    技术是骨骼，工作流是血管，而<span class="highlight-bg">你的专业灵魂才是血液</span>。本章是关于在这场人机协作革命中，你如何重新定位自己，实现价值飞跃与时间自由的哲学与实践。
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <span>16 / 23</span>
+                <div class="nav-arrows">
+                    <span class="nav-arrow prev" onclick="prevSlide()">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </span>
+                    <span class="nav-arrow" onclick="nextSlide()">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 幻灯片 18: 第四章 - 页2 -->
+    <section class="slide-container" id="slide-17" data-index="17">
+        <div class="slide-content">
+            <div class="chapter-indicator fade-up">第四章 2/7</div>
+
+            <h2 class="display-title serif fade-up delay-100" style="font-size: 2.2rem;">
+                4.1 重新定义生产关系：你是<span class="highlight-bg">"思想家"</span>与<span class="highlight-bg">"决策者"</span>，AI是<span class="highlight-underline">"执行层"</span>与<span class="highlight-underline">"参谋部"</span>
+            </h2>
+
+            <p class="section-subtitle fade-up delay-200">
+                这不仅是角色分工，更是<span class="highlight-bg">"生产关系的重构"</span>
+            </p>
+
+            <div class="content-grid fade-up delay-300" style="margin-top: 2rem;">
+                <div>
+                    <div class="bg-gray-50 p-6 rounded-sm mb-6" style="border-left: 4px solid var(--accent);">
+                        <p class="text-xl font-medium mb-3 serif" style="color: var(--accent);">AI（执行层与参谋部）</p>
+
+                        <div class="mb-4">
+                            <p class="text-sm uppercase tracking-widest mb-2" style="color: var(--stone);">COO（首席运营官）</p>
+                            <p class="lead-text" style="font-size: 1.05rem;">
+                                负责高效、稳定、零错误地执行既定流程：数据整理、初稿撰写、格式排版。<span class="highlight-underline">追求效率、稳定与规模。</span>
+                            </p>
+                        </div>
+
+                        <div>
+                            <p class="text-sm uppercase tracking-widest mb-2" style="color: var(--stone);">参谋部</p>
+                            <p class="lead-text" style="font-size: 1.05rem;">
+                                提供<span class="highlight-bg">跨领域视角与联想</span>（例如，将古代王朝财政与现代货币政策类比）。它能突破你的思维定式，但<span class="highlight-underline">决策权永远在你</span>。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="bg-gray-50 p-6 rounded-sm mb-6" style="border-left: 4px solid var(--accent);">
+                        <p class="text-xl font-medium mb-3 serif" style="color: var(--accent);">你（思想家与决策者）</p>
+
+                        <div class="mb-4">
+                            <p class="text-sm uppercase tracking-widest mb-2" style="color: var(--stone);">CEO（首席执行官）与总编辑</p>
+                            <p class="lead-text" style="font-size: 1.05rem;">
+                                负责核心战略、<span class="highlight-underline">不可替代的深度洞察</span>（基于经验的行业理解、辩证逻辑、人性把握）、最终的价值判断与事实核验。
+                            </p>
+                        </div>
+
+                        <div>
+                            <p class="text-sm uppercase tracking-widest mb-2" style="color: var(--stone);">灵魂注入者</p>
+                            <p class="lead-text" style="font-size: 1.05rem;">
+                                只有你能在内容中融入<span class="highlight-bg">温度、立场、价值观</span>与独特的人格魅力，建立真正的读者信任。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <span>17 / 23</span>
+                <div class="nav-arrows">
+                    <span class="nav-arrow prev" onclick="prevSlide()">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </span>
+                    <span class="nav-arrow" onclick="nextSlide()">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 幻灯片 19: 第四章 - 页3 -->
+    <section class="slide-container" id="slide-18" data-index="18">
+        <div class="slide-content">
+            <div class="chapter-indicator fade-up">第四章 3/7</div>
+
+            <h2 class="display-title serif fade-up delay-100" style="font-size: 2.2rem;">
+                4.2 构建动态分层创作系统：将精力<span class="highlight-bg">精准配置于价值巅峰</span>
+            </h2>
+
+            <p class="section-subtitle fade-up delay-200">
+                根据内容的价值密度与创造性要求，动态分配人机精力，实现<span class="highlight-underline">时间ROI最大化</span>
+            </p>
+
+            <div class="fade-up delay-300" style="margin-top: 2rem;">
+                <div class="bg-gray-50 p-6 rounded-sm mb-4" style="overflow-x: auto;">
+                    <table class="w-full" style="font-size: 0.95rem; border-collapse: collapse;">
+                        <thead>
+                            <tr style="border-bottom: 2px solid var(--charcoal);">
+                                <th class="text-left py-3 px-4" style="font-weight: 600;">内容类型</th>
+                                <th class="text-left py-3 px-4" style="font-weight: 600;">示例</th>
+                                <th class="text-left py-3 px-4" style="font-weight: 600;">AI职能（执行层）</th>
+                                <th class="text-left py-3 px-4" style="font-weight: 600;">你的核心工作（决策层）</th>
+                                <th class="text-center py-3 px-4" style="font-weight: 600;">时间解放度</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
+                                <td class="py-3 px-4"><strong>标准化内容</strong></td>
+                                <td class="py-3 px-4">数据日报、新闻快讯</td>
+                                <td class="py-3 px-4"><span class="highlight-bg">90%</span>：自动抓取、整理、生成初稿</td>
+                                <td class="py-3 px-4">10%：事实核验、关键数据复核</td>
+                                <td class="py-3 px-4 text-center" style="color: var(--accent); font-weight: 600;">极高（解放80%+时间）</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
+                                <td class="py-3 px-4"><strong>半标准化内容</strong></td>
+                                <td class="py-3 px-4">热点解读、投教笔记</td>
+                                <td class="py-3 px-4"><span class="highlight-underline">60-70%</span>：提供素材、搭建框架、生成多版本草稿</td>
+                                <td class="py-3 px-4"><span class="highlight-underline">30-40%</span>：注入核心观点、调整论述逻辑、"灵魂润色"</td>
+                                <td class="py-3 px-4 text-center" style="color: var(--accent); font-weight: 600;">高（解放50%+时间）</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4"><strong>高附加值内容</strong></td>
+                                <td class="py-3 px-4">年度策略、深度研报</td>
+                                <td class="py-3 px-4"><span class="highlight-underline">20-30%</span>：作为研究助理，资料检索、数据初步处理</td>
+                                <td class="py-3 px-4"><span class="highlight-bg">70-80%</span>：构建核心逻辑、整合独家信息、价值观输出</td>
+                                <td class="py-3 px-4 text-center" style="color: var(--accent); font-weight: 600;">中等（解放20-30%研究时间）</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="quote-block fade-up delay-400" style="font-size: 1.2rem;">
+                    <p class="mb-2"><strong>人机协作比喻：</strong></p>
+                    <ul class="content-list" style="font-size: 1rem;">
+                        <li>标准化内容：AI是<span class="highlight-underline">全自动工厂流水线</span>，你是质检员</li>
+                        <li>半标准化内容：AI是<span class="highlight-underline">建筑框架与建材</span>，你是室内设计师</li>
+                        <li>高附加值内容：AI是<span class="highlight-underline">智库研究员</span>，你是<span class="highlight-bg">首席经济学家</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <span>18 / 23</span>
+                <div class="nav-arrows">
+                    <span class="nav-arrow prev" onclick="prevSlide()">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </span>
+                    <span class="nav-arrow" onclick="nextSlide()">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 幻灯片 20: 第四章 - 页4 -->
+    <section class="slide-container" id="slide-19" data-index="19">
+        <div class="slide-content">
+            <div class="chapter-indicator fade-up">第四章 4/7</div>
+
+            <h2 class="display-title serif fade-up delay-100" style="font-size: 2.2rem;">
+                4.3 基础设施决胜点：你的<span class="highlight-bg">"数字基建"</span>决定协作上限
+            </h2>
+
+            <div class="content-grid fade-up delay-200" style="margin-top: 2rem;">
+                <div>
+                    <p class="lead-text mb-6" style="font-size: 1.1rem;">
+                        <strong>再先进的理念，也需要落地的工具链支撑。</strong>这场生产力革命存在<span class="highlight-bg">隐性的技术门槛</span>：
+                    </p>
+
+                    <div class="bg-gray-50 p-5 rounded-sm mb-4" style="border-left: 4px solid var(--accent);">
+                        <p class="text-lg font-medium mb-2 serif" style="color: var(--accent);">1. 多端同步与隐私保障</p>
+                        <p class="lead-text" style="font-size: 1.05rem;">
+                            需要能在<span class="highlight-underline">手机（通勤）</span>、<span class="highlight-underline">平板（居家）</span>、<span class="highlight-underline">电脑（办公室）</span>间无缝切换的工具链。
+                        </p>
+                    </div>
+
+                    <div class="bg-gray-50 p-5 rounded-sm mb-4" style="border-left: 4px solid var(--accent);">
+                        <p class="text-lg font-medium mb-2 serif" style="color: var(--accent);">2. 支付与技术部署能力</p>
+                        <p class="lead-text mb-2" style="font-size: 1.05rem;">
+                            使用顶尖的AI服务，调用高质量数据API可能产生费用。更重要的是，<span class="highlight-bg">部署和使用这些先进工具的能力本身已成为一种壁垒</span>。
+                        </p>
+                    </div>
+
+                    <div class="bg-gray-50 p-5 rounded-sm" style="border-left: 4px solid var(--accent);">
+                        <p class="text-lg font-medium mb-2 serif" style="color: var(--accent);">3. 结构化思维是最终壁垒</p>
+                        <p class="lead-text" style="font-size: 1.05rem;">
+                            工具可以降低技术门槛，但<span class="highlight-underline">"提出好问题"</span>和<span class="highlight-underline">"设计好流程"</span>的结构化思维能力，决定了AI输出是"机翻腔调"还是<span class="highlight-bg">"专业手笔"</span>。这是人类把关的核心价值，也是<span class="highlight-underline">无法被替代的终极能力</span>。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <span>19 / 23</span>
+                <div class="nav-arrows">
+                    <span class="nav-arrow prev" onclick="prevSlide()">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </span>
+                    <span class="nav-arrow" onclick="nextSlide()">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 幻灯片 21: 第四章 - 页5 -->
+    <section class="slide-container" id="slide-20" data-index="20">
+        <div class="slide-content">
+            <div class="chapter-indicator fade-up">第四章 5/7</div>
+
+            <h2 class="display-title serif fade-up delay-100" style="font-size: 2.2rem;">
+                4.4 行动路线图：完成从<span class="highlight-underline">"创作者"</span>到<span class="highlight-bg">"架构师"</span>的跃迁
+            </h2>
+
+            <div class="content-grid fade-up delay-200" style="margin-top: 2rem;">
+                <div>
+                    <div class="bg-gray-50 p-6 rounded-sm mb-6" style="border-left: 4px solid var(--accent);">
+                        <p class="text-lg font-medium mb-3 serif" style="color: var(--accent);">第一阶段：认知重构与单点突破</p>
+                        <ol class="content-list" style="font-size: 1.05rem;">
+                            <li><strong>通读本教程</strong>，建立人机协作的正确心智模型。</li>
+                            <li><strong>运用入门教程的能力</strong>：撰写核心场景的系统提示词，并用元宝分组固化。开始尝试将<span class="highlight-underline">"地铁口述"</span>转化为<span class="highlight-underline">"AI初稿"</span>。</li>
+                            <li>产出至少<span class="highlight-bg">20篇</span>由AI辅助、你深度编辑的内容，建立手感与信心，初步感受时间节约。</li>
+                        </ol>
+                    </div>
+
+                    <div class="bg-gray-50 p-6 rounded-sm mb-6" style="border-left: 4px solid var(--accent);">
+                        <p class="text-lg font-medium mb-3 serif" style="color: var(--accent);">第二阶段：流程优化与能力拓展</p>
+                        <ol class="content-list" style="font-size: 1.05rem;">
+                            <li><strong>探索进阶教程的能力</strong>：建立个人知识库，实现<span class="highlight-underline">"口述-检索-合成"</span>工作流；在扣子中搭建1-2个自动化工作流。</li>
+                            <li>通过<span class="highlight-bg">"元提示词"</span>持续分析和固化你的顶级内容风格，迭代系统提示词。</li>
+                            <li>将你的工作时间重新分配，将节约出的时间用于更深入的<span class="highlight-underline">竞品调研</span>或<span class="highlight-underline">客户互动</span>。</li>
+                        </ol>
+                    </div>
+
+                    <div class="bg-gray-50 p-6 rounded-sm" style="border-left: 4px solid var(--accent);">
+                        <p class="text-lg font-medium mb-3 serif" style="color: var(--accent);">第三阶段：生态构建与价值跃迁</p>
+                        <ol class="content-list" style="font-size: 1.05rem;">
+                            <li>创建或深度定制<span class="highlight-bg">1-2个专属Skill</span>，解决特定复杂分析需求，将其作为你的"数字作品"或"团队利器"。</li>
+                            <li>将已验证的方法论打包，用于<span class="highlight-underline">团队培训与流程标准化</span>，从个人高效升级为组织高效。</li>
+                            <li>你的工作重心完成根本性转移：从<span class="highlight-underline">"内容生产者"</span>转向<span class="highlight-bg">"策略架构师"、"质量控制者"</span>和<span class="highlight-bg">"读者关系战略家"</span>。核心产出从"文章篇数"变为<span class="highlight-underline">"内容体系、品牌影响力与读者忠诚度"</span>。</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <span>20 / 23</span>
+                <div class="nav-arrows">
+                    <span class="nav-arrow prev" onclick="prevSlide()">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </span>
+                    <span class="nav-arrow" onclick="nextSlide()">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 幻灯片 22: 第四章 - 页6 -->
+    <section class="slide-container" id="slide-21" data-index="21">
+        <div class="slide-content">
+            <div class="chapter-indicator fade-up">第四章 6/7</div>
+
+            <h2 class="display-title serif fade-up delay-100" style="font-size: 2.2rem;">
+                4.5 最后的警醒与共勉：<span class="highlight-bg">专业是灯塔</span>，<span class="highlight-bg">灵魂是风帆</span>
+            </h2>
+
+            <p class="section-subtitle fade-up delay-200">
+                无论工具如何迭代，潮水如何汹涌，请时刻紧握这些永不沉没的航船龙骨
+            </p>
+
+            <div class="content-grid fade-up delay-300" style="margin-top: 2rem;">
+                <div>
+                    <div class="bg-gray-50 p-5 rounded-sm mb-4" style="border-left: 4px solid var(--accent);">
+                        <p class="lead-text mb-2" style="font-size: 1.1rem;">
+                            <span class="highlight-bg">✓ 事实核验</span>，是你的职业良知。
+                        </p>
+                    </div>
+
+                    <div class="bg-gray-50 p-5 rounded-sm mb-4" style="border-left: 4px solid var(--accent);">
+                        <p class="lead-text mb-2" style="font-size: 1.1rem;">
+                            <span class="highlight-bg">✓ 风险提示</span>，是你的法定义务与道德责任。
+                        </p>
+                    </div>
+
+                    <div class="bg-gray-50 p-5 rounded-sm mb-4" style="border-left: 4px solid var(--accent);">
+                        <p class="lead-text mb-2" style="font-size: 1.1rem;">
+                            <span class="highlight-bg">✓ 独立思考</span>，是你区别于机器的最后壁垒。
+                        </p>
+                    </div>
+
+                    <div class="bg-gray-50 p-5 rounded-sm mb-6" style="border-left: 4px solid var(--accent);">
+                        <p class="lead-text mb-2" style="font-size: 1.1rem;">
+                            <span class="highlight-bg">✓ 与读者的真实、温暖连接</span>，是你一切工作的意义所在。
+                        </p>
+                    </div>
+
+                    <div class="quote-block" style="font-size: 1.2rem; margin-top: 2rem;">
+                        本质上，我们正在将<span class="highlight-underline">"述而不作"</span>的古老智慧数字化：人类负责思维发射与灵魂指引，AI实现思维的高效落地与规模放大。这种协作既保留了创作者独一无二的灵魂，又通过技术杠杆击碎了<span class="highlight-bg">"时间贫困"</span>的枷锁，最终实现将碎片化的"垃圾时间"转化为系统性的<span class="highlight-underline">"认知变现"</span>。
+                    </div>
+
+                    <div class="mt-6 text-center fade-up delay-400">
+                        <p class="text-lg serif italic" style="color: var(--charcoal);">
+                            工具在进化，但专业主义的内核永恒。AI赋予你的是翅膀，而<span class="highlight-bg">方向和高度，永远由你决定</span>。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <span>21 / 23</span>
+                <div class="nav-arrows">
+                    <span class="nav-arrow prev" onclick="prevSlide()">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </span>
+                    <span class="nav-arrow" onclick="nextSlide()">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 幻灯片 23: 终章 - 启程 -->
+    <section class="slide-container" id="slide-22" data-index="22">
+        <div class="slide-content">
+            <div class="chapter-indicator fade-up">终章</div>
+
+            <h2 class="display-title serif fade-up delay-100" style="font-size: 2.8rem;">
+                现在，启程 —— <span class="highlight-bg">夺回你的时间与创造力</span>
+            </h2>
+
+            <div class="fade-up delay-200">
+                <div class="quote-block" style="margin-top: 2rem; font-size: 1.3rem;">
+                    回到那个无数个相似的深夜。也许你的工作台前依然有屏幕亮着，但心境已然不同。<br><br>
+                    AI在后台自动抓取数据、整理要点、生成初稿。而你，在喝一杯茶的间隙，思考着更核心的问题：<span class="highlight-bg">下周的市场主线逻辑是什么？我的读者群体正在经历怎样的情绪周期？如何将这次复杂的政策解读，讲成一个让人共鸣且充满希望的故事？</span>
+                </div>
+
+                <p class="lead-text fade-up delay-300" style="font-size: 1.15rem; margin-top: 2rem;">
+                    你节省的不仅是时间，更是<span class="highlight-bg">最宝贵的认知带宽和创造性精力</span>。将它们重新投资于真正创造专业价值、构建个人品牌、深度连接读者的地方。
+                </p>
+
+                <div class="bg-gray-50 p-6 rounded-sm fade-up delay-400" style="margin-top: 2rem; border-left: 4px solid var(--accent);">
+                    <p class="text-sm uppercase tracking-widest mb-3" style="color: var(--accent); font-weight: 600;">这张地图已经在你手中</p>
+                    <p class="lead-text" style="font-size: 1.05rem;">
+                        从最小的、可执行的第一步开始——<span class="highlight-underline">打开你的笔记软件，记下第一个灵感碎片</span>；或<span class="highlight-underline">打开元宝，创建一个分组，写下你的第一行系统提示词</span>。
+                    </p>
+                </div>
+
+                <div class="text-center fade-up delay-500" style="margin-top: 3rem;">
+                    <p class="text-xl serif" style="color: var(--charcoal); line-height: 1.8;">
+                        你作为<span class="highlight-bg">"时间主权者"</span>和<span class="highlight-bg">"策略大脑"</span>的进化之旅，<br>
+                        <span class="display-title serif" style="font-size: 2.5rem; color: var(--accent);">此时此刻，正式启航。</span>
+                    </p>
+                    <p class="text-lg mt-4" style="color: var(--stone);">
+                        去夺回你的时间，放大你的灵魂。
+                    </p>
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <span>22 / 23</span>
+                <div class="nav-arrows">
+                    <span class="nav-arrow prev" onclick="prevSlide()">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </span>
+                    <span class="nav-arrow" onclick="nextSlide()">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 通用脚本 -->
+    <script src="assets/js/common.js"></script>
+
+    <!-- 提示词数据 -->
+    <script src="assets/js/prompts-data.js"></script>
+
+    <!-- 幻灯片脚本延迟加载 -->
+    <script src="assets/js/slides.js" defer></script>
+</body>
+</html>

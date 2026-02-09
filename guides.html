@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作指引 | 爆款智坊</title>
+    <meta name="description" content="详细的工具配置步骤与流程图解，支持按需查阅">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png">
+
+    <!-- Preconnect for fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Preload critical CSS -->
+    <link rel="preload" href="assets/css/common.css" as="style">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Critical CSS (内联) -->
+    <style>
+        :root{--charcoal:#1a1a1a;--rice:#FFF;--stone:#666;--light-stone:#f5f5f5;--accent:#c9a96e}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Inter',sans-serif;background-color:var(--rice);color:var(--charcoal);line-height:1.7;min-height:100vh;padding-top:100px}.serif{font-family:'Playfair Display',serif}.global-nav{position:fixed;top:0;left:0;right:0;padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;z-index:100;background:#fff}.nav-logo{font-size:1.1rem;font-weight:600;letter-spacing:-.02em;color:var(--charcoal);text-decoration:none}.nav-links{display:flex;gap:2.5rem;font-size:.8rem;letter-spacing:.05em}.nav-link{position:relative;cursor:pointer;transition:opacity .3s;color:var(--stone);text-decoration:none}.nav-link:hover{opacity:.6;color:var(--charcoal)}.nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background-color:var(--charcoal);transition:width .3s ease}.nav-link:hover::after{width:100%}.container{max-width:1200px;margin:0 auto;padding:0 4rem}.section-label{font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--stone);display:block;margin-bottom:1rem}.section-title{font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.2;margin-bottom:1.5rem}.section-description{font-size:1.1rem;color:var(--stone);max-width:700px;font-weight:300}.card-grid{display:grid;gap:2rem;margin-top:4rem}.card-grid-3{grid-template-columns:repeat(3,1fr)}.card{padding:2rem;border:1px solid rgba(0,0,0,.05);transition:all .3s ease;background:#fff}.card:hover{border-color:rgba(0,0,0,.15);box-shadow:0 4px 12px rgba(0,0,0,.05);transform:translateY(-2px)}.card-icon{width:48px;height:48px;background:var(--light-stone);display:flex;align-items:center;justify-content:center;margin-bottom:1rem}.card h3{font-size:1.25rem;font-weight:500;margin-bottom:.5rem}.card p{font-size:.9rem;color:var(--stone);line-height:1.6}
+    </style>
+
+    <!-- Non-critical CSS -->
+    <link href="assets/css/common.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="assets/css/common.css" rel="stylesheet"></noscript>
+</head>
+<body>
+    <!-- 全局导航 -->
+    <nav class="global-nav">
+        <a class="nav-logo" href="index.html">AI CONTENT LAB</a>
+        <div class="nav-links">
+            <a class="nav-link" href="index.html">核心教程</a>
+            <a class="nav-link" href="guides.html">操作指引</a>
+            <a class="nav-link" href="resources.html">资源下载</a>
+            <a class="nav-link" href="about.html">关于</a>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <main class="container">
+        <header class="section-header">
+            <span class="section-label">模块二</span>
+            <h1 class="section-title serif">操作指引</h1>
+            <p class="section-description">
+                详细的工具配置步骤与流程图解，支持按需查阅。
+            </p>
+        </header>
+
+        <div class="card-grid card-grid-3">
+            <article class="card">
+                <div class="card-icon">
+                    <i data-lucide="settings" class="w-6 h-6" style="color: var(--stone)"></i>
+                </div>
+                <h3>元宝分组配置</h3>
+                <p>如何创建6000字符系统提示词分组，固化你的专业分身</p>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">
+                    <i data-lucide="database" class="w-6 h-6" style="color: var(--stone)"></i>
+                </div>
+                <h3>知识库搭建</h3>
+                <p>语雀/IMA知识库结构设计与文档上传规范</p>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">
+                    <i data-lucide="git-branch" class="w-6 h-6" style="color: var(--stone)"></i>
+                </div>
+                <h3>扣子工作流设计</h3>
+                <p>节点连接、API接入与条件分支设置详解</p>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">
+                    <i data-lucide="mic" class="w-6 h-6" style="color: var(--stone)"></i>
+                </div>
+                <h3>语音创作工作流</h3>
+                <p>使用语音输入快速生成专业内容</p>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">
+                    <i data-lucide="file-text" class="w-6 h-6" style="color: var(--stone)"></i>
+                </div>
+                <h3>提示词优化技巧</h3>
+                <p>提升AI生成质量的实用技巧与案例</p>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">
+                    <i data-lucide="shield" class="w-6 h-6" style="color: var(--stone)"></i>
+                </div>
+                <h3>合规与风险控制</h3>
+                <p>财经内容创作的合规要点与风险防范</p>
+            </article>
+        </div>
+    </main>
+
+    <!-- 通用脚本 -->
+    <script src="assets/js/common.js"></script>
+</body>
+</html>

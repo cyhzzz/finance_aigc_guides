@@ -1,0 +1,295 @@
+/**
+ * 通用样式 - 全站共享
+ * 用于所有页面的基础样式
+ */
+
+:root {
+    --charcoal: #1a1a1a;
+    --rice: #FFFFFF;
+    --stone: #666666;
+    --light-stone: #f5f5f5;
+    --accent: #c9a96e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--rice);
+    color: var(--charcoal);
+    overflow-x: hidden;
+    line-height: 1.7;
+}
+
+.serif {
+    font-family: 'Playfair Display', serif;
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.1);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,0,0.2);
+}
+
+/* 全局导航栏 */
+.global-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 100%);
+}
+
+.nav-logo {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--charcoal);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+}
+
+.nav-link {
+    position: relative;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    color: var(--stone);
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    opacity: 0.6;
+    color: var(--charcoal);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--charcoal);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* 进度条 */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background-color: var(--accent);
+    z-index: 1000;
+    transition: width 0.3s ease;
+}
+
+/* 内容排版优化 */
+.lead-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--charcoal);
+    max-width: 800px;
+    font-weight: 400;
+}
+
+/* 引用块样式 */
+.quote-block {
+    border-left: 2px solid var(--accent);
+    padding-left: 2rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: var(--stone);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* 列表样式 */
+.content-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+.content-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.content-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+/* 强调文本 */
+.highlight-text {
+    background: linear-gradient(to bottom, transparent 60%, rgba(201, 169, 110, 0.2) 60%);
+    padding: 0 4px;
+}
+
+/* 标签样式 */
+.tag {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background-color: var(--light-stone);
+    color: var(--stone);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 2px;
+}
+
+/* 代码/提示词样式 */
+.prompt-box {
+    background-color: var(--light-stone);
+    border-radius: 4px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--charcoal);
+    border-left: 3px solid var(--accent);
+}
+
+/* 二级页面通用样式 */
+.section-header {
+    margin-bottom: 4rem;
+}
+
+.section-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--stone);
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.section-description {
+    font-size: 1.1rem;
+    color: var(--stone);
+    max-width: 700px;
+    font-weight: 300;
+}
+
+/* 卡片网格 */
+.card-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.card-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.card-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.card {
+    padding: 2rem;
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    border-color: rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* 按钮样式 */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border: 1px solid rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    cursor: pointer;
+    background: transparent;
+    color: var(--charcoal);
+}
+
+.btn:hover {
+    border-color: var(--charcoal);
+    background-color: var(--charcoal);
+    color: var(--rice);
+}
+
+/* 统计数字 */
+.stat-number {
+    font-size: 3.5rem;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    color: var(--charcoal);
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+    .global-nav {
+        padding: 1.5rem 2rem;
+    }
+
+    .card-grid-2,
+    .card-grid-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+}

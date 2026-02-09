@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资源下载 | 爆款智坊</title>
+    <meta name="description" content="提示词模板、系统配置示例与检查清单">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="assets/css/common.css" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        :root{--charcoal:#1a1a1a;--rice:#FFF;--stone:#666;--light-stone:#f5f5f5;--accent:#c9a96e}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Inter',sans-serif;background-color:var(--light-stone);color:var(--charcoal);line-height:1.7;min-height:100vh;padding-top:100px}.serif{font-family:'Playfair Display',serif}.global-nav{position:fixed;top:0;left:0;right:0;padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;z-index:100;background:#fff}.nav-logo{font-size:1.1rem;font-weight:600;letter-spacing:-.02em;color:var(--charcoal);text-decoration:none}.nav-links{display:flex;gap:2.5rem;font-size:.8rem;letter-spacing:.05em}.nav-link{position:relative;cursor:pointer;transition:opacity .3s;color:var(--stone);text-decoration:none}.nav-link:hover{opacity:.6;color:var(--charcoal)}.nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background-color:var(--charcoal);transition:width .3s ease}.nav-link:hover::after{width:100%}.container{max-width:1200px;margin:0 auto;padding:0 4rem}.section-label{font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--stone);display:block;margin-bottom:1rem}.section-title{font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.2;margin-bottom:1.5rem}.section-description{font-size:1.1rem;color:var(--stone);max-width:700px;font-weight:300}.resource-list{display:flex;flex-direction:column;gap:1rem;margin-top:4rem}.resource-item{display:flex;align-items:center;justify-content:between;padding:1.5rem;background:#fff;border:1px solid rgba(0,0,0,.05);transition:all .3s ease}.resource-item:hover{border-color:rgba(0,0,0,.15);box-shadow:0 4px 12px rgba(0,0,0,.05)}.resource-icon{width:48px;height:48px;background:var(--light-stone);display:flex;align-items:center;justify-content:center;margin-right:1rem}.resource-info h4{font-size:1rem;font-weight:500;margin-bottom:.25rem}.resource-info p{font-size:.85rem;color:var(--stone)}.btn-download{display:inline-block;padding:.75rem 2rem;border:1px solid rgba(0,0,0,.15);transition:all .3s ease;font-size:.9rem;cursor:pointer;background:transparent;color:var(--charcoal);text-decoration:none;white-space:nowrap}.btn-download:hover{border-color:var(--charcoal);background-color:var(--charcoal);color:var(--rice)}
+    </style>
+
+    <link href="assets/css/common.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="assets/css/common.css" rel="stylesheet"></noscript>
+</head>
+<body>
+    <nav class="global-nav">
+        <a class="nav-logo" href="index.html">AI CONTENT LAB</a>
+        <div class="nav-links">
+            <a class="nav-link" href="index.html">核心教程</a>
+            <a class="nav-link" href="guides.html">操作指引</a>
+            <a class="nav-link" href="resources.html">资源下载</a>
+            <a class="nav-link" href="about.html">关于</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="section-header">
+            <span class="section-label">模块三</span>
+            <h1 class="section-title serif">资源下载</h1>
+            <p class="section-description">
+                提示词模板、系统配置示例与检查清单。
+            </p>
+        </header>
+
+        <div class="resource-list">
+            <div class="resource-item">
+                <div style="display:flex;align-items:center;flex:1">
+                    <div class="resource-icon">
+                        <i data-lucide="file-text" class="w-6 h-6" style="color:var(--stone)"></i>
+                    </div>
+                    <div class="resource-info">
+                        <h4>申万宏源风格系统提示词模板.txt</h4>
+                        <p>5000字完整配置 · 可直接复制到元宝</p>
+                    </div>
+                </div>
+                <a href="assets/files/prompts/申万宏源风格.txt" class="btn-download" download>下载</a>
+            </div>
+
+            <div class="resource-item">
+                <div style="display:flex;align-items:center;flex:1">
+                    <div class="resource-icon">
+                        <i data-lucide="search" class="w-6 h-6" style="color:var(--stone)"></i>
+                    </div>
+                    <div class="resource-info">
+                        <h4>元提示词提取器模板.txt</h4>
+                        <p>风格分析专用 · 适配历史爆款解构</p>
+                    </div>
+                </div>
+                <a href="assets/files/prompts/元提示词提取器.txt" class="btn-download" download>下载</a>
+            </div>
+
+            <div class="resource-item">
+                <div style="display:flex;align-items:center;flex:1">
+                    <div class="resource-icon">
+                        <i data-lucide="list-checks" class="w-6 h-6" style="color:var(--stone)"></i>
+                    </div>
+                    <div class="resource-info">
+                        <h4>180天进化路线图.pdf</h4>
+                        <p>三阶段行动计划与里程碑检查清单</p>
+                    </div>
+                </div>
+                <a href="assets/files/180天路线图.pdf" class="btn-download" download>下载</a>
+            </div>
+
+            <div class="resource-item">
+                <div style="display:flex;align-items:center;flex:1">
+                    <div class="resource-icon">
+                        <i data-lucide="shield" class="w-6 h-6" style="color:var(--stone)"></i>
+                    </div>
+                    <div class="resource-info">
+                        <h4>财经内容合规检查清单.pdf</h4>
+                        <p>风险提示用语规范与禁区词汇表</p>
+                    </div>
+                </div>
+                <a href="assets/files/合规检查清单.pdf" class="btn-download" download>下载</a>
+            </div>
+
+            <div class="resource-item">
+                <div style="display:flex;align-items:center;flex:1">
+                    <div class="resource-icon">
+                        <i data-lucide="sparkles" class="w-6 h-6" style="color:var(--stone)"></i>
+                    </div>
+                    <div class="resource-info">
+                        <h4>爆款智坊 Skill 文件</h4>
+                        <p>完整的小红书创作工作流</p>
+                    </div>
+                </div>
+                <a href="assets/files/skills/爆款智坊.skill" class="btn-download" download>下载</a>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/js/common.js"></script>
+</body>
+</html>

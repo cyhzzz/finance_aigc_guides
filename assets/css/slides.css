@@ -1,0 +1,381 @@
+/**
+ * 幻灯片样式 - 仅首页使用
+ * 延迟加载，非关键CSS
+ */
+
+/* 幻灯片容器 - 严格16:9 */
+.slide-container {
+    width: 100vw;
+    height: 100vh;
+    min-height: 700px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #FFFFFF;
+}
+
+.slide-content {
+    width: 100%;
+    max-width: 1400px;
+    height: 100%;
+    max-height: calc(100vw * 9 / 16);
+    padding: 5rem 8rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto;
+    content-visibility: auto; /* 渲染性能优化 */
+}
+
+/* 导航目录 - 右侧浮动 */
+.toc-nav {
+    position: fixed;
+    right: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1rem 0;
+}
+
+.toc-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* 进一步压缩到 0.5rem */
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0.3;
+    position: relative;
+    padding-left: 2px; /* 添加左侧内边距，防止放大时被遮挡 */
+}
+
+.toc-item:hover {
+    opacity: 0.7;
+}
+
+.toc-item.active {
+    opacity: 1;
+}
+
+/* 章节分隔线 */
+.toc-separator {
+    width: 20px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.15), transparent);
+    margin: 0.3rem 0; /* 从 0.4rem 减小到 0.3rem */
+    flex-shrink: 0;
+}
+
+.toc-dot {
+    width: 5px; /* 从 6px 稍微缩小 */
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--charcoal);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+    transform-origin: center center; /* 从中心缩放，避免位移 */
+}
+
+.toc-item.active .toc-dot {
+    transform: scale(1.4); /* 进一步减小到 1.4，避免被遮挡 */
+    background-color: var(--accent);
+}
+
+.toc-line {
+    width: 1px;
+    height: 0;
+    background-color: var(--charcoal);
+    opacity: 0.15;
+    transition: height 0.6s ease;
+    flex-shrink: 0;
+}
+
+.toc-item.active .toc-line {
+    height: 20px; /* 从 30px 减小到 20px */
+}
+
+.toc-label {
+    font-size: 0.65rem; /* 从 0.7rem 稍微缩小 */
+    letter-spacing: 0.1em; /* 从 0.15em 减小到 0.1em */
+    text-transform: uppercase;
+    font-weight: 500;
+    transform: translateX(-8px); /* 从 -10px 减小到 -8px */
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+}
+
+.toc-item:hover .toc-label,
+.toc-item.active .toc-label {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* 微妙淡入动画 */
+.fade-up {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: all 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity, transform; /* 性能优化 */
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+
+/* 章节指示器 */
+.chapter-indicator {
+    position: absolute;
+    top: 4rem;
+    left: 8rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    color: var(--stone);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-transform: uppercase;
+}
+
+.chapter-indicator::after {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background-color: var(--stone);
+    opacity: 0.4;
+}
+
+/* 页脚导航 */
+.slide-footer {
+    position: absolute;
+    bottom: 3rem;
+    left: 8rem;
+    right: 8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--stone);
+    border-top: 1px solid rgba(0,0,0,0.05);
+    padding-top: 2rem;
+}
+
+.nav-arrows {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-arrow {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0.5rem;
+}
+
+.nav-arrow:hover {
+    transform: translateX(5px);
+    color: var(--charcoal);
+}
+
+.nav-arrow.prev:hover {
+    transform: translateX(-5px);
+}
+
+/* 幻灯片内容样式 */
+.display-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.15;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+    color: var(--charcoal);
+}
+
+.section-subtitle {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--stone);
+    max-width: 700px;
+    font-weight: 300;
+    margin-bottom: 3rem;
+}
+
+/* 增大正文字体 */
+.lead-text {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--charcoal);
+    margin-bottom: 1.5rem;
+}
+
+/* 引用块增大 */
+.quote-block {
+    font-size: 1.3rem;
+    line-height: 1.7;
+    font-style: italic;
+    color: var(--charcoal);
+    border-left: 3px solid var(--accent);
+    padding-left: 2rem;
+    margin: 2rem 0;
+    font-weight: 400;
+}
+
+/* 内容列表增大 */
+.content-list {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--charcoal);
+    list-style: none;
+    padding: 0;
+}
+
+.content-list li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.8rem;
+}
+
+.content-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+/* 增加标题字体 */
+h3 {
+    font-size: 1.35rem;
+    margin-bottom: 1rem;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+}
+
+/* ===== 文案强调样式 ===== */
+
+/* 金色背景高亮 - 核心概念、重要关键词 */
+.highlight-bg {
+    background: linear-gradient(120deg,
+        rgba(201, 169, 110, 0.15) 0%,
+        rgba(201, 169, 110, 0.25) 50%,
+        rgba(201, 169, 110, 0.15) 100%);
+    background-size: 200% 100%;
+    padding: 0.2em 0.5em;
+    border-radius: 3px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.highlight-bg:hover {
+    background-position: 100% 0;
+}
+
+/* 渐变下划线 - 重要概念、专业术语 */
+.highlight-underline {
+    position: relative;
+    display: inline;
+    font-weight: 500;
+}
+
+.highlight-underline::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg,
+        var(--accent) 0%,
+        rgba(201, 169, 110, 0.6) 100%);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.highlight-underline:hover::after {
+    height: 5px;
+    bottom: 0;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .lead-text {
+        font-size: 1rem;
+    }
+
+    .quote-block {
+        font-size: 1.1rem;
+    }
+
+    .content-list {
+        font-size: 0.95rem;
+    }
+
+    h3 {
+        font-size: 1.15rem;
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+    .slide-content {
+        padding: 3rem 4rem;
+    }
+
+    .chapter-indicator {
+        left: 4rem;
+    }
+
+    .slide-footer {
+        left: 4rem;
+        right: 4rem;
+    }
+
+    .toc-nav {
+        right: 2rem;
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .slide-content {
+        padding: 2rem;
+    }
+
+    .chapter-indicator {
+        left: 2rem;
+        font-size: 0.7rem;
+    }
+
+    .slide-footer {
+        left: 2rem;
+        right: 2rem;
+    }
+
+    .toc-nav {
+        display: none;
+    }
+
+    .display-title {
+        font-size: 2rem;
+    }
+}
