@@ -215,7 +215,7 @@
     }
 
     /**
-     * 加载提示词数据并格式化显示
+     * 加载提示词数据并格式化显示（2.2节）
      */
     function loadPromptFile() {
         const container = document.getElementById('prompt-content-22');
@@ -242,7 +242,34 @@
     }
 
     /**
-     * 复制提示词到剪贴板
+     * 加载提示词数据并格式化显示（2.3节）
+     */
+    function loadPromptFile23() {
+        const container = document.getElementById('prompt-content-23');
+        if (!container) return;
+
+        // 使用prompts-data-yuan.js中的数据
+        const text = typeof promptData_23 !== 'undefined' ? promptData_23 : '提示词数据未加载';
+
+        // 简单的markdown格式化
+        const formattedText = text
+            .replace(/^## (.*$)/gim, '<p style="color: var(--accent); margin-bottom: 1rem; margin-top: 1.5rem;"><strong>## $1</strong></p>')
+            .replace(/^# (.*$)/gim, '<p style="color: var(--accent); margin-bottom: 1rem; margin-top: 1.5rem; font-size: 1.2rem;"><strong># $1</strong></p>')
+            .replace(/^### (.*$)/gim, '<p style="color: var(--accent); margin-bottom: 0.8rem; margin-top: 1rem;"><strong>### $1</strong></p>')
+            .replace(/^\* (.*$)/gim, '<p style="margin-left: 1rem; margin-bottom: 0.5rem;">• $1</p>')
+            .replace(/^  - (.*$)/gim, '<p style="margin-left: 2rem; margin-bottom: 0.3rem; font-size: 0.9rem;">  - $1</p>')
+            .replace(/^(\d+)\. (.*$)/gim, '<p style="margin-left: 1rem; margin-bottom: 0.5rem;">$1. $2</p>')
+            .replace(/^\{(.*?)\}/gim, '<p style="margin-bottom: 0.5rem;"><strong>{$1}</strong></p>')
+            .replace(/^"([^"]+)":/gim, '<p style="margin-bottom: 0.5rem; margin-left: 1rem;"><strong>"$1":</strong>')
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\n\n/g, '</p><p style="margin-bottom: 0.5rem;">')
+            .replace(/\n/g, '<br>');
+
+        container.innerHTML = `<div style="line-height: 1.8;">${formattedText}</div>`;
+    }
+
+    /**
+     * 复制提示词到剪贴板（2.2节）
      */
     function copyPromptToClipboard() {
         const text = typeof promptData_22 !== 'undefined' ? promptData_22 : '';
@@ -274,7 +301,39 @@
     }
 
     /**
-     * 备用复制方法（兼容旧浏览器）
+     * 复制提示词到剪贴板（2.3节）
+     */
+    function copyPromptToClipboard23() {
+        const text = typeof promptData_23 !== 'undefined' ? promptData_23 : '';
+
+        if (!text) {
+            alert('提示词内容未加载');
+            return;
+        }
+
+        // 使用现代API复制到剪贴板
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.getElementById('copy-prompt-btn-23');
+                const originalText = btn.textContent;
+                btn.textContent = '已复制！';
+                btn.style.backgroundColor = '#22c55e';
+
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.backgroundColor = 'var(--accent)';
+                }, 2000);
+            }).catch(err => {
+                console.error('复制失败:', err);
+                fallbackCopy23(text);
+            });
+        } else {
+            fallbackCopy23(text);
+        }
+    }
+
+    /**
+     * 备用复制方法（兼容旧浏览器）- 2.2节
      */
     function fallbackCopy(text) {
         const textarea = document.createElement('textarea');
@@ -304,6 +363,36 @@
     }
 
     /**
+     * 备用复制方法（兼容旧浏览器）- 2.3节
+     */
+    function fallbackCopy23(text) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        try {
+            document.execCommand('copy');
+            const btn = document.getElementById('copy-prompt-btn-23');
+            const originalText = btn.textContent;
+            btn.textContent = '已复制！';
+            btn.style.backgroundColor = '#22c55e';
+
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.backgroundColor = 'var(--accent)';
+            }, 2000);
+        } catch (err) {
+            console.error('复制失败:', err);
+            alert('复制失败，请手动选择文本复制');
+        }
+
+        document.body.removeChild(textarea);
+    }
+
+    /**
      * 初始化
      */
     function init() {
@@ -311,6 +400,7 @@
         animateSlideContent(0);
         setupNavigation();
         loadPromptFile();
+        loadPromptFile23();
     }
 
     // 导出到全局作用域（供HTML调用）
@@ -318,6 +408,7 @@
     window.nextSlide = nextSlide;
     window.prevSlide = prevSlide;
     window.copyPromptToClipboard = copyPromptToClipboard;
+    window.copyPromptToClipboard23 = copyPromptToClipboard23;
 
     // DOM加载完成后初始化
     if (document.readyState === 'loading') {

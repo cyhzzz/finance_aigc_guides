@@ -662,51 +662,19 @@
                 </div>
                 <div>
                     <div style="position: relative; height: 100%; display: flex; flex-direction: column;">
-                        <div class="bg-gray-50 p-6 rounded-sm" style="flex: 1; max-height: 55vh; overflow-y: auto; font-family: 'Courier New', monospace; font-size: 0.8rem; line-height: 1.5;">
-                            <p style="color: var(--accent); margin-bottom: 1rem;"><strong>## 元提示词完整示例</strong></p>
-
-                            <p style="margin-bottom: 0.8rem;"><strong>角色设定：</strong></p>
-                            <p style="margin-left: 1rem; margin-bottom: 1rem;">你是一位顶尖财经内容策划分析师，擅长深度解构内容风格，提炼可复制的风格要素。</p>
-
-                            <p style="margin-bottom: 0.8rem;"><strong>任务目标：</strong></p>
-                            <p style="margin-left: 1rem; margin-bottom: 1rem;">分析我提供的3篇财经爆款文章，生成一份完整的"风格要素库"报告，可直接用于AI系统提示词。</p>
-
-                            <p style="margin-bottom: 0.8rem;"><strong>分析框架：</strong></p>
-
-                            <p style="margin-left: 1rem; margin-bottom: 0.5rem;"><strong>1. 宏观风格分析</strong></p>
-                            <ul style="margin-left: 2rem; margin-bottom: 0.8rem; font-size: 0.75rem;">
-                                <li>思维模式：逻辑结构、思考方式、观察视角</li>
-                                <li>价值取向：核心关注、评价标准、立场倾向</li>
-                                <li>表达意图：写作目的、预期效果、读者关系</li>
-                                <li>整体架构：结构模式、发展脉络、主次安排</li>
-                            </ul>
-
-                            <p style="margin-left: 1rem; margin-bottom: 0.5rem;"><strong>2. 微观风格分析</strong></p>
-                            <ul style="margin-left: 2rem; margin-bottom: 0.8rem; font-size: 0.75rem;">
-                                <li>语言特征：句式、词汇、修辞手法</li>
-                                <li>结构特征：段落长度、过渡风格、层次模式</li>
-                                <li>叙述特征：视角、时间线、态度</li>
-                                <li>情感特征：强度、表达方式、语调</li>
-                            </ul>
-
-                            <p style="margin-left: 1rem; margin-bottom: 0.5rem;"><strong>3. 独特性识别</strong></p>
-                            <ul style="margin-left: 2rem; margin-bottom: 0.8rem; font-size: 0.75rem;">
-                                <li>标志性短语：作者常用表达</li>
-                                <li>意象系统：核心比喻和象征</li>
-                                <li>文化引用：典故、知识领域</li>
-                            </ul>
-
-                            <p style="margin-left: 1rem; margin-bottom: 0.5rem;"><strong>4. 综合模仿指南</strong></p>
-                            <ul style="margin-left: 2rem; margin-bottom: 0.8rem; font-size: 0.75rem;">
-                                <li>必备元素：必须模仿的风格特征</li>
-                                <li>重要元素：重要但可灵活调整的特征</li>
-                                <li>模仿步骤：从构思到成文的完整流程</li>
-                                <li>常见误区：需要避免的模仿错误</li>
-                            </ul>
-
-                            <p style="color: var(--stone); font-style: italic; margin-top: 1.5rem; font-size: 0.75rem;">
-                                使用方法：将此元提示词发送给AI，然后粘贴3篇你的爆款文章，AI将自动生成详细的风格分析报告。
-                            </p>
+                        <button
+                            id="copy-prompt-btn-23"
+                            onclick="copyPromptToClipboard23()"
+                            style="position: absolute; top: 1rem; right: 1rem; z-index: 10; padding: 0.5rem 1rem; background-color: var(--accent); color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem; transition: all 0.3s ease;"
+                            onmouseover="this.style.opacity='0.8'"
+                            onmouseout="this.style.opacity='1'"
+                        >
+                            复制提示词
+                        </button>
+                        <div class="bg-gray-50 p-6 rounded-sm" style="flex: 1; max-height: 55vh; overflow-y: auto; font-family: 'Courier New', monospace; font-size: 0.7rem; line-height: 1;">
+                            <div id="prompt-content-23" style="white-space: pre-wrap;">
+                                <p style="color: var(--stone); text-align: center; padding: 2rem;">正在加载提示词文件...</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1555,6 +1523,7 @@
 
     <!-- 提示词数据 -->
     <script src="assets/js/prompts-data.js"></script>
+    <script src="assets/js/prompts-data-yuan.js"></script>
 
     <!-- 幻灯片脚本延迟加载 -->
     <script src="assets/js/slides.js" defer></script>
