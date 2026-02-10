@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="assets/css/common.css" as="style">
+    <link href="assets/css/mobile.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -41,7 +42,13 @@
             <a class="nav-link" href="resources.html">资源下载</a>
             <a class="nav-link" href="about.html">关于</a>
         </div>
+        <button class="hamburger-btn" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
+    <div class="mobile-menu-overlay"></div>
 
     <main class="container">
 
@@ -98,5 +105,34 @@
     </main>
 
     <script src="assets/js/common.js"></script>
+    <script>
+        // 汉堡菜单功能
+        const hamburgerBtn = document.querySelector('.hamburger-btn');
+        const navLinks = document.querySelector('.nav-links');
+        const overlay = document.querySelector('.mobile-menu-overlay');
+
+        if (hamburgerBtn && navLinks && overlay) {
+            hamburgerBtn.addEventListener('click', () => {
+                hamburgerBtn.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                overlay.classList.toggle('active');
+            });
+
+            overlay.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+
+            // 点击导航链接后关闭菜单
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburgerBtn.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    overlay.classList.remove('active');
+                });
+            });
+        }
+    </script>
 </body>
 </html>

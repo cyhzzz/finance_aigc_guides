@@ -32,6 +32,11 @@
     <!-- 非关键CSS异步加载 -->
     <link href="assets/css/slides.css" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="assets/css/slides.css" rel="stylesheet"></noscript>
+
+    <!-- 移动端响应式样式 -->
+    <link href="assets/css/mobile.css" rel="stylesheet">
+    <link href="assets/css/mobile-tutorials.css" rel="stylesheet">
+    <link href="assets/css/mobile-scroll.css" rel="stylesheet">
 </head>
 <body>
     <!-- 进度条 -->
@@ -49,7 +54,13 @@
             <a class="nav-link" href="resources.html">资源下载</a>
             <a class="nav-link" href="about.html">关于</a>
         </div>
+        <button class="hamburger-btn" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
+    <div class="mobile-menu-overlay"></div>
 
     <!-- 右侧浮动目录 -->
     <nav class="toc-nav" id="tocNav">
@@ -1682,5 +1693,37 @@
 
     <!-- 幻灯片脚本 -->
     <script src="assets/js/slides.js"></script>
+    <script>
+        // 汉堡菜单功能
+        const hamburgerBtn = document.querySelector('.hamburger-btn');
+        const navLinks = document.querySelector('.nav-links');
+        const overlay = document.querySelector('.mobile-menu-overlay');
+
+        if (hamburgerBtn && navLinks && overlay) {
+            hamburgerBtn.addEventListener('click', () => {
+                hamburgerBtn.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                overlay.classList.toggle('active');
+            });
+
+            overlay.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+
+            // 点击导航链接后关闭菜单
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburgerBtn.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    overlay.classList.remove('active');
+                });
+            });
+        }
+    </script>
+
+    <!-- 移动端滚动功能（仅在移动端生效） -->
+    <script src="assets/js/mobile-scroll.js"></script>
 </body>
 </html>

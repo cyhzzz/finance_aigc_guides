@@ -1,0 +1,433 @@
+/**
+ * 核心教程移动端滚动布局
+ * 将幻灯片改为长页面滚动，仅在移动端生效（≤768px）
+ */
+
+@media (max-width: 768px) {
+
+    /* ===========================
+       核心改变：幻灯片 → 长页面
+       =========================== */
+
+    /* 移除幻灯片容器的一切限制 */
+    .slide-container {
+        position: relative !important;
+        display: block !important;
+        min-height: auto !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        margin-bottom: 3rem !important;
+        padding-bottom: 2rem !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+    }
+
+    /* 最后一个幻灯片去掉底部分隔 */
+    .slide-container:last-child {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+        border-bottom: none !important;
+    }
+
+    /* 幻灯片内容完全释放 */
+    .slide-content {
+        position: relative !important;
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        padding: 2rem 1.5rem !important;
+        transform: none !important;
+        opacity: 1 !important;
+        transition: none !important;
+    }
+
+    /* 隐藏所有幻灯片切换相关的元素 */
+    .slide-footer,
+    .nav-arrows,
+    .nav-arrow {
+        display: none !important;
+    }
+
+    /* 隐藏右侧目录（改为顶部固定导航条） */
+    .toc-nav {
+        display: none !important;
+    }
+
+    /* ===========================
+       新增：顶部章节导航条
+       =========================== */
+
+    /* 在导航栏后面添加章节导航 */
+    .global-nav {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    /* 创建新的顶部章节导航（通过JS动态生成） */
+    .chapter-nav {
+        display: block !important;
+        position: sticky !important;
+        top: 70px !important;
+        z-index: 90 !important;
+        background: #fff !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+        padding: 0.75rem 1rem !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        white-space: nowrap !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important;
+    }
+
+    .chapter-nav::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .chapter-nav-item {
+        display: inline-block !important;
+        font-size: 0.75rem !important;
+        padding: 0.4rem 0.8rem !important;
+        margin-right: 0.5rem !important;
+        background: var(--light-stone) !important;
+        border-radius: 15px !important;
+        color: var(--stone) !important;
+        text-decoration: none !important;
+        transition: all 0.2s ease !important;
+        flex-shrink: 0 !important;
+    }
+
+    .chapter-nav-item:active,
+    .chapter-nav-item.active {
+        background: var(--charcoal) !important;
+        color: var(--rice) !important;
+    }
+
+    /* ===========================
+       章节标题优化
+       =========================== */
+
+    /* 每个章节添加明显的视觉分隔 */
+    .slide-container::before {
+        content: attr(data-chapter) !important;
+        display: block !important;
+        font-size: 0.7rem !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.15em !important;
+        text-transform: uppercase !important;
+        color: var(--accent) !important;
+        margin-bottom: 0.5rem !important;
+        padding: 0 1.5rem !important;
+    }
+
+    /* ===========================
+       内容排版优化
+       =========================== */
+
+    /* 移除所有动画延迟 */
+    .fade-up,
+    .delay-100,
+    .delay-200,
+    .delay-300,
+    .delay-400 {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+
+    /* 内容网格改为普通流式布局 */
+    .content-grid {
+        display: block !important;
+        gap: 0 !important;
+    }
+
+    .content-grid > div {
+        margin-bottom: 1.5rem !important;
+    }
+
+    .content-grid > div:last-child {
+        margin-bottom: 0 !important;
+    }
+
+    /* ===========================
+       字体大小统一规范
+       =========================== */
+
+    .slide-content h1,
+    .slide-content .display-title {
+        font-size: 1.5rem !important;
+        line-height: 1.4 !important;
+        margin-bottom: 0.8rem !important;
+        font-weight: 600 !important;
+    }
+
+    .slide-content h2 {
+        font-size: 1.25rem !important;
+        line-height: 1.4 !important;
+        margin-top: 1.5rem !important;
+        margin-bottom: 0.8rem !important;
+        font-weight: 600 !important;
+    }
+
+    .slide-content h3 {
+        font-size: 1.1rem !important;
+        line-height: 1.4 !important;
+        margin-top: 1.2rem !important;
+        margin-bottom: 0.6rem !important;
+        font-weight: 600 !important;
+    }
+
+    .slide-content p,
+    .slide-content .lead-text {
+        font-size: 0.95rem !important;
+        line-height: 1.7 !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .slide-content li {
+        font-size: 0.95rem !important;
+        line-height: 1.7 !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    /* 引用块 */
+    .slide-content .quote-block {
+        font-size: 0.9rem !important;
+        padding: 1rem !important;
+        margin: 1rem 0 !important;
+        line-height: 1.6 !important;
+        background: var(--light-stone) !important;
+        border-left: 3px solid var(--accent) !important;
+    }
+
+    /* 标签 */
+    .highlight-bg {
+        font-size: 0.8rem !important;
+        padding: 0.35rem 0.7rem !important;
+        margin: 0.2rem 0.2rem 0.2rem 0 !important;
+        display: inline-block !important;
+    }
+
+    /* 副标题 */
+    .section-subtitle {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 1rem !important;
+        color: var(--stone) !important;
+    }
+
+    /* ===========================
+       特殊元素优化
+       =========================== */
+
+    /* 列表 */
+    ul, ol {
+        padding-left: 1.5rem !important;
+        margin: 1rem 0 !important;
+    }
+
+    /* 代码块 */
+    pre {
+        font-size: 0.85rem !important;
+        padding: 1rem !important;
+        overflow-x: auto !important;
+        background: var(--light-stone) !important;
+        border-radius: 8px !important;
+    }
+
+    code {
+        font-size: 0.85rem !important;
+        word-break: break-all !important;
+    }
+
+    /* 表格 */
+    table {
+        display: block !important;
+        overflow-x: auto !important;
+        font-size: 0.85rem !important;
+        margin: 1rem 0 !important;
+    }
+
+    /* 图片 */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+        display: block !important;
+        margin: 1rem 0 !important;
+        border-radius: 8px !important;
+    }
+
+    /* 统计卡片 */
+    .stats-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+        margin: 1.5rem 0 !important;
+    }
+
+    .stat-number {
+        font-size: 2rem !important;
+        line-height: 1 !important;
+        margin-bottom: 0.3rem !important;
+    }
+
+    .stat-label {
+        font-size: 0.75rem !important;
+        line-height: 1.3 !important;
+    }
+
+    /* ===========================
+       返回顶部按钮
+       =========================== */
+
+    .back-to-top {
+        display: block !important;
+        position: fixed !important;
+        bottom: 2rem !important;
+        right: 1rem !important;
+        width: 44px !important;
+        min-height: 44px !important;
+        background: var(--charcoal) !important;
+        color: var(--rice) !important;
+        border: none !important;
+        border-radius: 50% !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        z-index: 95 !important;
+        cursor: pointer !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .back-to-top:active {
+        transform: scale(0.95) !important;
+    }
+
+    /* ===========================
+       阅读进度条
+       =========================== */
+
+    .reading-progress {
+        display: block !important;
+        position: fixed !important;
+        top: 70px !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 2px !important;
+        background: rgba(0, 0, 0, 0.05) !important;
+        z-index: 100 !important;
+    }
+
+    .reading-progress-bar {
+        height: 100% !important;
+        background: var(--accent) !important;
+        width: 0% !important;
+        transition: width 0.1s ease !important;
+    }
+
+    /* ===========================
+       防止内容溢出
+       =========================== */
+
+    * {
+        overflow-wrap: break-word !important;
+        word-wrap: break-word !important;
+        word-break: break-word !important;
+    }
+
+    h1, h2, h3, h4, h5, h6, p, li, td, th {
+        overflow-wrap: anywhere !important;
+        hyphens: auto !important;
+    }
+
+    /* ===========================
+       间距优化
+       =========================== */
+
+    /* 段落间距 */
+    .slide-content > p + p {
+        margin-top: 1rem !important;
+    }
+
+    /* 标题后的间距 */
+    .slide-content > h1 + p,
+    .slide-content > h2 + p,
+    .slide-content > h3 + p {
+        margin-top: 0.8rem !important;
+    }
+
+    /* ===========================
+       为顶部导航留出空间
+       =========================== */
+
+    body {
+        padding-top: 70px !important;
+    }
+
+    /* ===========================
+       性能优化
+       =========================== */
+
+    /* 移动端禁用所有hover效果 */
+    *:hover {
+        transition: none !important;
+    }
+
+    /* 减少阴影渲染 */
+    .slide-container,
+    .quote-block {
+        box-shadow: none !important;
+    }
+}
+
+/* ===========================
+   小屏手机进一步优化
+   =========================== */
+
+@media (max-width: 480px) {
+
+    .slide-content {
+        padding: 1.5rem 1rem !important;
+    }
+
+    .slide-content h1,
+    .slide-content .display-title {
+        font-size: 1.3rem !important;
+    }
+
+    .slide-content h2 {
+        font-size: 1.15rem !important;
+    }
+
+    .slide-content p,
+    .slide-content .lead-text {
+        font-size: 0.9rem !important;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0.8rem !important;
+    }
+}
+
+/* ===========================
+   横屏模式优化
+   =========================== */
+
+@media (max-width: 768px) and (orientation: landscape) {
+
+    .slide-content {
+        padding: 1.5rem !important;
+    }
+
+    .slide-content h1,
+    .slide-content .display-title {
+        font-size: 1.3rem !important;
+    }
+
+    /* 横屏时减少垂直间距 */
+    .slide-content > div,
+    .slide-content > p {
+        margin-bottom: 0.5rem !important;
+    }
+}
