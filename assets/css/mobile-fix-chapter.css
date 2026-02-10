@@ -1,0 +1,36 @@
+/**
+ * 移动端修复：章节指示器和导航栏重叠问题
+ */
+
+@media (max-width: 768px) {
+    /* 调整章节指示器位置，避免和导航栏重叠 */
+    .chapter-indicator {
+        top: 3rem !important;  /* 从4rem减少到3rem，紧贴导航栏下方 */
+        left: 1.5rem !important;
+        font-size: 0.7rem !important;
+    }
+
+    /* 确保内容区域有足够的上边距 */
+    .slide-content {
+        padding-top: 2rem !important;
+    }
+
+    /* 调整标题和章节指示器的间距 */
+    .display-title,
+    .section-title {
+        margin-top: 0.5rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    /* 小屏幕进一步调整 */
+    .chapter-indicator {
+        top: 2.8rem !important;
+        left: 1.2rem !important;
+        font-size: 0.65rem !important;
+    }
+
+    .slide-content {
+        padding-top: 1.5rem !important;
+    }
+}
