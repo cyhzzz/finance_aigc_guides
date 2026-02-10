@@ -4,26 +4,197 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>资源下载 | 爆款智坊</title>
-    <meta name="description" content="提示词模板、系统配置示例与检查清单">
+    <meta name="description" content="提示词模板、Skill工具下载">
 
+    <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon.png">
+
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="assets/css/common.css" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS & Lucide Icons -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 
+    <!-- 关键CSS内联 -->
     <style>
-        :root{--charcoal:#1a1a1a;--rice:#FFF;--stone:#666;--light-stone:#f5f5f5;--accent:#c9a96e}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Inter',sans-serif;background-color:var(--light-stone);color:var(--charcoal);line-height:1.7;min-height:100vh;padding-top:100px}.serif{font-family:'Playfair Display',serif}.global-nav{position:fixed;top:0;left:0;right:0;padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;z-index:100;background:#fff}.nav-logo{font-size:1.1rem;font-weight:600;letter-spacing:-.02em;color:var(--charcoal);text-decoration:none}.nav-links{display:flex;gap:2.5rem;font-size:.8rem;letter-spacing:.05em}.nav-link{position:relative;cursor:pointer;transition:opacity .3s;color:var(--stone);text-decoration:none}.nav-link:hover{opacity:.6;color:var(--charcoal)}.nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background-color:var(--charcoal);transition:width .3s ease}.nav-link:hover::after{width:100%}.container{max-width:1200px;margin:0 auto;padding:0 4rem}.section-label{font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--stone);display:block;margin-bottom:1rem}.section-title{font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.2;margin-bottom:1.5rem}.section-description{font-size:1.1rem;color:var(--stone);max-width:700px;font-weight:300}.resource-list{display:flex;flex-direction:column;gap:1rem;margin-top:4rem}.resource-item{display:flex;align-items:center;justify-content:between;padding:1.5rem;background:#fff;border:1px solid rgba(0,0,0,.05);transition:all .3s ease}.resource-item:hover{border-color:rgba(0,0,0,.15);box-shadow:0 4px 12px rgba(0,0,0,.05)}.resource-icon{width:48px;height:48px;background:var(--light-stone);display:flex;align-items:center;justify-content:center;margin-right:1rem}.resource-info h4{font-size:1rem;font-weight:500;margin-bottom:.25rem}.resource-info p{font-size:.85rem;color:var(--stone)}.btn-download{display:inline-block;padding:.75rem 2rem;border:1px solid rgba(0,0,0,.15);transition:all .3s ease;font-size:.9rem;cursor:pointer;background:transparent;color:var(--charcoal);text-decoration:none;white-space:nowrap}.btn-download:hover{border-color:var(--charcoal);background-color:var(--charcoal);color:var(--rice)}
-    </style>
+        :root{--charcoal:#1a1a1a;--rice:#FFF;--stone:#666;--light-stone:#f5f5f5;--accent:#c9a96e}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none}html::-webkit-scrollbar{display:none}body{font-family:'Inter',sans-serif;background-color:var(--rice);color:var(--charcoal);overflow-x:hidden;line-height:1.7;min-height:100vh;padding-top:80px}.serif{font-family:'Playfair Display',serif}.global-nav{position:fixed;top:0;left:0;right:0;padding:1.5rem 2.5rem 1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;z-index:100;background:linear-gradient(to bottom,rgba(255,255,255,.95) 0%,rgba(255,255,255,0) 100%)}.nav-logo{font-size:1.1rem;font-weight:600;letter-spacing:-.02em;color:var(--charcoal);text-decoration:none;display:flex;align-items:center;gap:.75rem}.nav-logo img{height:40px;width:auto}.nav-links{display:flex;gap:2.5rem;font-size:.8rem;letter-spacing:.05em}.nav-link{position:relative;cursor:pointer;transition:opacity .3s;color:var(--stone);text-decoration:none}.nav-link:hover{opacity:.6;color:var(--charcoal)}.nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background-color:var(--charcoal);transition:width .3s ease}.nav-link:hover::after{width:100%}.container{max-width:1200px;margin:0 auto;padding:0 4rem}.section-label{font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--stone);display:block;margin-bottom:1rem}.section-title{font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.2;margin-bottom:1.5rem}.section-description{font-size:1.1rem;color:var(--stone);max-width:700px;font-weight:300}
 
-    <link href="assets/css/common.css" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="assets/css/common.css" rel="stylesheet"></noscript>
+        /* 分类大卡片样式 */
+        .category-section {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .category-section:hover {
+            border-color: rgba(0,0,0,0.1);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+        }
+
+        .category-layout {
+            display: flex;
+            gap: 2rem;
+            align-items: stretch;
+        }
+
+        .category-info {
+            flex: 0 0 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-right: 2rem;
+            border-right: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: var(--charcoal);
+        }
+
+        .category-description {
+            font-size: 0.9rem;
+            color: var(--stone);
+            line-height: 1.6;
+        }
+
+        /* 资源容器样式 */
+        .resources-container {
+            flex: 1;
+            max-height: 340px;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+
+        /* 自定义滚动条 */
+        .resources-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .resources-container::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.03);
+            border-radius: 3px;
+        }
+        .resources-container::-webkit-scrollbar-thumb {
+            background: rgba(0,0,0,0.15);
+            border-radius: 3px;
+        }
+        .resources-container::-webkit-scrollbar-thumb:hover {
+            background: rgba(0,0,0,0.25);
+        }
+
+        /* 资源网格样式 */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .resource-card {
+            padding: 1rem;
+            background: var(--light-stone);
+            border: 1px solid rgba(0,0,0,0.04);
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .resource-card:hover {
+            background: #fff;
+            border-color: rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+
+        .resource-icon {
+            width: 36px;
+            height: 36px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+        }
+
+        .resource-card h3 {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--charcoal);
+            line-height: 1.4;
+        }
+
+        .resource-card p {
+            font-size: 0.8rem;
+            color: var(--stone);
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .resource-download {
+            margin-top: auto;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(0,0,0,0.12);
+            transition: all 0.2s ease;
+            font-size: 0.8rem;
+            text-decoration: none;
+            color: var(--charcoal);
+            text-align: center;
+            border-radius: 4px;
+            background: #fff;
+        }
+
+        .resource-download:hover {
+            border-color: var(--charcoal);
+            background-color: var(--charcoal);
+            color: var(--rice);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .category-layout {
+                flex-direction: column;
+            }
+            .category-info {
+                flex: none;
+                border-right: none;
+                border-bottom: 1px solid rgba(0,0,0,0.06);
+                padding-right: 0;
+                padding-bottom: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            .resources-container {
+                max-height: none;
+            }
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--stone);
+            font-style: italic;
+        }
+    </style>
 </head>
 <body>
+    <!-- 全局导航 -->
     <nav class="global-nav">
-        <a class="nav-logo" href="index.html">AI CONTENT LAB</a>
+        <a class="nav-logo" href="index.html" style="display: flex; align-items: center; gap: 0.75rem;">
+            <img src="assets/images/logo.png" alt="爆款智坊 Logo" style="height: 40px; width: auto;">
+            <span>爆款智坊</span>
+        </a>
         <div class="nav-links">
             <a class="nav-link" href="index.html">核心教程</a>
             <a class="nav-link" href="guides.html">操作指引</a>
@@ -32,83 +203,207 @@
         </div>
     </nav>
 
+    <!-- 主内容区 -->
     <main class="container">
-        <header class="section-header">
-            <span class="section-label">模块三</span>
+        <header>
+
             <h1 class="section-title serif">资源下载</h1>
             <p class="section-description">
-                提示词模板、系统配置示例与检查清单。
+                提示词模板、Skill工具与配置示例。所有资源可直接下载使用。
             </p>
         </header>
 
-        <div class="resource-list">
-            <div class="resource-item">
-                <div style="display:flex;align-items:center;flex:1">
-                    <div class="resource-icon">
-                        <i data-lucide="file-text" class="w-6 h-6" style="color:var(--stone)"></i>
-                    </div>
-                    <div class="resource-info">
-                        <h4>申万宏源风格系统提示词模板.txt</h4>
-                        <p>5000字完整配置 · 可直接复制到元宝</p>
-                    </div>
+        <!-- Skill工具分类 -->
+        <section class="category-section">
+            <div class="category-layout">
+                <div class="category-info">
+                    <h2 class="category-title">Skill 工具</h2>
+                    <p class="category-description">完整的AI技能包，可直接导入Claude Code使用</p>
                 </div>
-                <a href="assets/files/prompts/申万宏源风格.txt" class="btn-download" download>下载</a>
-            </div>
+                <div class="resources-container">
+                    <div class="resources-grid">
+                        <article class="resource-card">
+                            <div class="resource-icon">
+                                <i data-lucide="sparkles" class="w-5 h-5" style="color: var(--stone)"></i>
+                            </div>
+                            <h3>小红书创作工作流</h3>
+                            <p>完整的小红书图文笔记创作流程，从初稿到配图的全流程自动化</p>
+                            <a href="assets/files/skills/xiaohongshu-creation-workflow.skill" class="resource-download" download>下载 .skill</a>
+                        </article>
 
-            <div class="resource-item">
-                <div style="display:flex;align-items:center;flex:1">
-                    <div class="resource-icon">
-                        <i data-lucide="search" class="w-6 h-6" style="color:var(--stone)"></i>
-                    </div>
-                    <div class="resource-info">
-                        <h4>元提示词提取器模板.txt</h4>
-                        <p>风格分析专用 · 适配历史爆款解构</p>
-                    </div>
-                </div>
-                <a href="assets/files/prompts/元提示词提取器.txt" class="btn-download" download>下载</a>
-            </div>
+                        <article class="resource-card">
+                            <div class="resource-icon">
+                                <i data-lucide="pen-tool" class="w-5 h-5" style="color: var(--stone)"></i>
+                            </div>
+                            <h3>内容创作框架</h3>
+                            <p>通用的内容创作框架Skill，适用于各种类型的内容创作场景</p>
+                            <a href="assets/files/skills/content-creation-framework.skill" class="resource-download" download>下载 .skill</a>
+                        </article>
 
-            <div class="resource-item">
-                <div style="display:flex;align-items:center;flex:1">
-                    <div class="resource-icon">
-                        <i data-lucide="list-checks" class="w-6 h-6" style="color:var(--stone)"></i>
-                    </div>
-                    <div class="resource-info">
-                        <h4>180天进化路线图.pdf</h4>
-                        <p>三阶段行动计划与里程碑检查清单</p>
+                        <article class="resource-card">
+                            <div class="resource-icon">
+                                <i data-lucide="image" class="w-5 h-5" style="color: var(--stone)"></i>
+                            </div>
+                            <h3>手绘风格信息图</h3>
+                            <p>自动生成手绘风格的信息图配图，支持多种图表类型</p>
+                            <a href="assets/files/skills/hand-drawn-infographic.skill" class="resource-download" download>下载 .skill</a>
+                        </article>
                     </div>
                 </div>
-                <a href="assets/files/180天路线图.pdf" class="btn-download" download>下载</a>
             </div>
+        </section>
 
-            <div class="resource-item">
-                <div style="display:flex;align-items:center;flex:1">
-                    <div class="resource-icon">
-                        <i data-lucide="shield" class="w-6 h-6" style="color:var(--stone)"></i>
-                    </div>
-                    <div class="resource-info">
-                        <h4>财经内容合规检查清单.pdf</h4>
-                        <p>风险提示用语规范与禁区词汇表</p>
-                    </div>
+        <!-- 提示词分类 -->
+        <section class="category-section">
+            <div class="category-layout">
+                <div class="category-info">
+                    <h2 class="category-title">提示词</h2>
+                    <p class="category-description">针对不同平台和账号风格的系统提示词模板</p>
                 </div>
-                <a href="assets/files/合规检查清单.pdf" class="btn-download" download>下载</a>
-            </div>
+                <div class="resources-container">
+                    <div class="resources-grid">
+                        <article class="resource-card">
+                            <div class="resource-icon">
+                                <i data-lucide="graduation-cap" class="w-5 h-5" style="color: var(--stone)"></i>
+                            </div>
+                            <h3>投教笔记提示词</h3>
+                            <p>小红书官方投教风格，适合发布理财知识、投资技巧等内容</p>
+                            <a href="assets/files/prompts/小红书/创作提示词-小红书主号-投教笔记撰写提示词.txt" class="resource-download" download>下载 .txt</a>
+                        </article>
 
-            <div class="resource-item">
-                <div style="display:flex;align-items:center;flex:1">
-                    <div class="resource-icon">
-                        <i data-lucide="sparkles" class="w-6 h-6" style="color:var(--stone)"></i>
-                    </div>
-                    <div class="resource-info">
-                        <h4>爆款智坊 Skill 文件</h4>
-                        <p>完整的小红书创作工作流</p>
+                        <article class="resource-card">
+                            <div class="resource-icon">
+                                <i data-lucide="megaphone" class="w-5 h-5" style="color: var(--stone)"></i>
+                            </div>
+                            <h3>广告笔记提示词</h3>
+                            <p>小红书官方广告风格，适合产品推广、开户引导等内容</p>
+                            <a href="assets/files/prompts/小红书/创作提示词-小红书主号-广告笔记撰写提示词.txt" class="resource-download" download>下载 .txt</a>
+                        </article>
+
+                        <article class="resource-card">
+                            <div class="resource-icon">
+                                <i data-lucide="cat" class="w-5 h-5" style="color: var(--stone)"></i>
+                            </div>
+                            <h3>叮叮猫风格提示词</h3>
+                            <p>小红书KOS账号风格，小白友好，亲和力强</p>
+                            <a href="assets/files/prompts/小红书/创作提示词-小红书KOS号-叮叮猫笔记撰写提示词.txt" class="resource-download" download>下载 .txt</a>
+                        </article>
+
+                        <article class="resource-card">
+                            <div class="resource-icon">
+                                <i data-lucide="shield" class="w-5 h-5" style="color: var(--stone)"></i>
+                            </div>
+                            <h3>排雷哥风格提示词</h3>
+                            <p>小红书KOS账号风格，系统科普，理性分析</p>
+                            <a href="assets/files/prompts/小红书/创作提示词-小红书KOS号-排雷哥笔记创作提示词.txt" class="resource-download" download>下载 .txt</a>
+                        </article>
+
+                        <article class="resource-card">
+                            <div class="resource-icon">
+                                <i data-lucide="smile" class="w-5 h-5" style="color: var(--stone)"></i>
+                            </div>
+                            <h3>乐乐风格提示词</h3>
+                            <p>小红书KOS账号风格，热点驱动，活泼亲切</p>
+                            <a href="assets/files/prompts/小红书/创作提示词-小红书KOS号-乐乐笔记撰写提示词.txt" class="resource-download" download>下载 .txt</a>
+                        </article>
+
+                        <article class="resource-card">
+                            <div class="resource-icon">
+                                <i data-lucide="newspaper" class="w-5 h-5" style="color: var(--stone)"></i>
+                            </div>
+                            <h3>头部券商公众号文风</h3>
+                            <p>仿头部券商公众号风格，适合严肃的财经分析文章</p>
+                            <a href="assets/files/prompts/公众号/创作提示词-仿其他头部券商公众号文风.json" class="resource-download" download>下载 .json</a>
+                        </article>
+
+                        <article class="resource-card">
+                            <div class="resource-icon">
+                                <i data-lucide="check-circle" class="w-5 h-5" style="color: var(--stone)"></i>
+                            </div>
+                            <h3>合规审核提示词</h3>
+                            <p>用于内容发布前的合规性审核，确保符合监管要求</p>
+                            <a href="assets/files/prompts/小红书/合规提示词-合规审核提示词.txt" class="resource-download" download>下载 .txt</a>
+                        </article>
+
+                        <article class="resource-card">
+                            <div class="resource-icon">
+                                <i data-lucide="edit-3" class="w-5 h-5" style="color: var(--stone)"></i>
+                            </div>
+                            <h3>合规辅助修订提示词</h3>
+                            <p>协助修订存在合规风险的内容，提出改进建议</p>
+                            <a href="assets/files/prompts/小红书/合规提示词-合规辅助修订提示词.txt" class="resource-download" download>下载 .txt</a>
+                        </article>
+
+                        <article class="resource-card">
+                            <div class="resource-icon">
+                                <i data-lucide="trending-up" class="w-5 h-5" style="color: var(--stone)"></i>
+                            </div>
+                            <h3>爆款营销文案操盘手</h3>
+                            <p>专家级提示词，专注打造高转化率的营销文案</p>
+                            <a href="assets/files/prompts/小红书/专家提示词——爆款营销文案操盘手.txt" class="resource-download" download>下载 .txt</a>
+                        </article>
+
+                        <article class="resource-card">
+                            <div class="resource-icon">
+                                <i data-lucide="zap" class="w-5 h-5" style="color: var(--stone)"></i>
+                            </div>
+                            <h3>小红书流量黑客</h3>
+                            <p>专家级提示词，掌握小红书流量增长的核心技巧</p>
+                            <a href="assets/files/prompts/小红书/专家提示词——小红书流量黑客.txt" class="resource-download" download>下载 .txt</a>
+                        </article>
                     </div>
                 </div>
-                <a href="assets/files/skills/爆款智坊.skill" class="btn-download" download>下载</a>
             </div>
-        </div>
+        </section>
+
+        <!-- 元提示词分类 -->
+        <section class="category-section">
+            <div class="category-layout">
+                <div class="category-info">
+                    <h2 class="category-title">元提示词</h2>
+                    <p class="category-description">用于分析和提取其他提示词风格的工具提示词</p>
+                </div>
+                <div class="resources-container">
+                    <div class="resources-grid">
+                        <article class="resource-card">
+                            <div class="resource-icon">
+                                <i data-lucide="search" class="w-5 h-5" style="color: var(--stone)"></i>
+                            </div>
+                            <h3>创作风格提取器</h3>
+                            <p>从历史爆款内容中分析并提取创作风格特征，生成可复用的系统提示词</p>
+                            <a href="assets/files/prompts_pilot/创作风格提取提示词.txt" class="resource-download" download>下载 .txt</a>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 其他文件分类 -->
+        <section class="category-section">
+            <div class="category-layout">
+                <div class="category-info">
+                    <h2 class="category-title">其他文件</h2>
+                    <p class="category-description">配置示例、文档资料等其他资源文件</p>
+                </div>
+                <div class="resources-container">
+                    <div class="resources-grid">
+                        <article class="resource-card">
+                            <div class="resource-icon">
+                                <i data-lucide="file-text" class="w-5 h-5" style="color: var(--stone)"></i>
+                            </div>
+                            <h3>即梦小红书封面图制作指南</h3>
+                            <p>基于即梦AI的小红书封面图制作方式详细教程（PDF）</p>
+                            <a href="assets/files/docs/基于即梦的小红书封面图制作方式.pdf" class="resource-download" download target="_blank">下载 PDF</a>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <script src="assets/js/common.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
 </body>
 </html>

@@ -15,7 +15,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
-        :root{--charcoal:#1a1a1a;--rice:#FFF;--stone:#666;--light-stone:#f5f5f5;--accent:#c9a96e}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Inter',sans-serif;background-color:var(--rice);color:var(--charcoal);line-height:1.7;min-height:100vh;padding-top:100px}.serif{font-family:'Playfair Display',serif}.global-nav{position:fixed;top:0;left:0;right:0;padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;z-index:100;background:#fff}.nav-logo{font-size:1.1rem;font-weight:600;letter-spacing:-.02em;color:var(--charcoal);text-decoration:none}.nav-links{display:flex;gap:2.5rem;font-size:.8rem;letter-spacing:.05em}.nav-link{position:relative;cursor:pointer;transition:opacity .3s;color:var(--stone);text-decoration:none}.nav-link:hover{opacity:.6;color:var(--charcoal)}.nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background-color:var(--charcoal);transition:width .3s ease}.nav-link:hover::after{width:100%}.container{max-width:800px;margin:0 auto;padding:0 4rem;text-align:center}.section-label{font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--stone);display:block;margin-bottom:1rem}.section-title{font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.2;margin-bottom:1.5rem}.section-description{font-size:1.1rem;color:var(--stone);max-width:700px;font-weight:300;line-height:1.8}.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;margin-top:4rem;padding-top:4rem;border-top:1px solid rgba(0,0,0,.1)}.stat-number{font-size:3rem;font-weight:300;line-height:1;margin-bottom:.5rem;color:var(--accent)}.stat-label{font-size:.9rem;color:var(--stone)}.quote-box{background:var(--light-stone);padding:2rem;margin-top:4rem}.quote-text{font-size:1.1rem;font-style:italic;line-height:1.8;color:var(--charcoal)}.highlight{background:linear-gradient(to bottom,transparent 60%,rgba(201,169,110,.2) 60%);padding:0 4px}
+        :root{--charcoal:#1a1a1a;--rice:#FFF;--stone:#666;--light-stone:#f5f5f5;--accent:#c9a96e}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none}html::-webkit-scrollbar{display:none}body{font-family:'Inter',sans-serif;background-color:var(--rice);color:var(--charcoal);overflow-x:hidden;line-height:1.7;min-height:100vh;padding-top:80px}.serif{font-family:'Playfair Display',serif}.global-nav{position:fixed;top:0;left:0;right:0;padding:1.5rem 2.5rem 1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;z-index:100;background:linear-gradient(to bottom,rgba(255,255,255,.95) 0%,rgba(255,255,255,0) 100%)}.nav-logo{font-size:1.1rem;font-weight:600;letter-spacing:-.02em;color:var(--charcoal);text-decoration:none;display:flex;align-items:center;gap:.75rem}.nav-logo img{height:40px;width:auto}.nav-links{display:flex;gap:2.5rem;font-size:.8rem;letter-spacing:.05em}.nav-link{position:relative;cursor:pointer;transition:opacity .3s;color:var(--stone);text-decoration:none}.nav-link:hover{opacity:.6;color:var(--charcoal)}.nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background-color:var(--charcoal);transition:width .3s ease}.nav-link:hover::after{width:100%}.container{max-width:800px;margin:0 auto;padding:0 4rem;text-align:center}.section-label{font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--stone);display:block;margin-bottom:1rem}.section-title{font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.2;margin-bottom:1.5rem}.section-description{font-size:1.1rem;color:var(--stone);max-width:700px;font-weight:300;line-height:1.8}.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;margin-top:4rem;padding-top:4rem;border-top:1px solid rgba(0,0,0,.1)}.stat-number{font-size:3rem;font-weight:300;line-height:1;margin-bottom:.5rem;color:var(--accent)}.stat-label{font-size:.9rem;color:var(--stone)}.quote-box{background:var(--light-stone);padding:2rem;margin-top:4rem}.quote-text{font-size:1.1rem;font-style:italic;line-height:1.8;color:var(--charcoal)}.highlight{background:linear-gradient(to bottom,transparent 60%,rgba(201,169,110,.2) 60%);padding:0 4px}.creator-card{background:#fff;padding:3rem;margin-top:4rem;border:1px solid rgba(0,0,0,0.05);border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.04)}.creator-avatar{width:100px;height:100px;border-radius:50%;object-fit:cover;margin:0 auto 1.5rem;background:var(--light-stone)}.creator-name{font-size:1.5rem;font-weight:600;margin-bottom:0.5rem;color:var(--charcoal)}.creator-title{font-size:0.9rem;color:var(--stone);margin-bottom:1rem;line-height:1.6}.creator-bio{font-size:0.95rem;color:var(--stone);line-height:1.7;max-width:600px;margin:0 auto}.mission-box{background:linear-gradient(135deg,rgba(201,169,110,0.08) 0%,rgba(201,169,110,0.02) 100%);padding:2.5rem;margin-top:3rem;border-radius:8px;border:1px solid rgba(201,169,110,0.15)}.mission-title{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:var(--accent)}.mission-text{font-size:0.95rem;line-height:1.8;color:var(--charcoal)}
+    </style>
+
+    <style>
+        /* 创建者卡片额外样式 */
+        .creator-section {
+            margin-top: 5rem;
+        }
+    </style>
     </style>
 
     <link href="assets/css/common.css" rel="stylesheet" media="print" onload="this.media='all'">
@@ -23,7 +31,10 @@
 </head>
 <body>
     <nav class="global-nav">
-        <a class="nav-logo" href="index.html">AI CONTENT LAB</a>
+        <a class="nav-logo" href="index.html" style="display: flex; align-items: center; gap: 0.75rem;">
+            <img src="assets/images/logo.png" alt="爆款智坊 Logo" style="height: 40px; width: auto;">
+            <span>爆款智坊</span>
+        </a>
         <div class="nav-links">
             <a class="nav-link" href="index.html">核心教程</a>
             <a class="nav-link" href="guides.html">操作指引</a>
@@ -33,34 +44,56 @@
     </nav>
 
     <main class="container">
-        <span class="section-label">关于</span>
+
         <h1 class="section-title serif">关于本教程</h1>
 
         <p class="section-description" style="margin: 0 auto 3rem;">
-            这份教程凝结了过去三年里，从焦虑到从容，从单打独斗到构建体系的全过程。
-            它不止于"怎么用"，更关于"怎么想"。它是一张地图，指引你穿越工具迷雾，
-            抵达<span class="highlight">高效创作与专业尊严并存</span>的彼岸。
+            本教程凝结了近两年来对AIGC技术的探索与实践经验， 总结了适用于我们行业和赛道的通用方法论与工具使用技巧。
+                但每个团队、每个场景都有其独特性，<span class="highlight">具体情况仍需结合实际自行探索</span>。
+                工具只是手段，真正的价值在于如何将其融入你的工作流，发挥最大效能。
         </p>
 
         <div class="stats-grid">
             <div>
-                <div class="stat-number serif">3年</div>
-                <div class="stat-label">实战沉淀</div>
+                <div class="stat-number serif">2年</div>
+                <div class="stat-label">AIGC探索实践</div>
             </div>
             <div>
-                <div class="stat-number serif">5000+</div>
-                <div class="stat-label">字系统提示词</div>
+                <div class="stat-number serif">证券</div>
+                <div class="stat-label">行业垂直应用</div>
             </div>
             <div>
-                <div class="stat-number serif">180天</div>
-                <div class="stat-label">进化路线图</div>
+                <div class="stat-number serif">实战</div>
+                <div class="stat-label">场景验证</div>
             </div>
         </div>
 
+       
+        <!-- 核心理念 -->
         <div class="quote-box">
             <p class="quote-text serif">
-                "记住这场变革的本质：AI不会取代投顾，但善用AI的投顾，将重新定义投顾工作的价值边界。"
+                "纸上得来终觉浅，绝知此事要躬行。"
             </p>
+            <p style="font-size: 0.9rem; color: var(--stone); margin-top: 1rem; font-style: normal;">
+                —— 陆游《冬夜读书示子聿》
+            </p>
+        </div>
+
+        <!-- 创建者信息 -->
+        <div class="creator-section">
+            <div class="creator-card">
+                <img src="assets/images/cyh.svg" alt="cyh" class="creator-avatar">
+                <h2 class="creator-name">cyh</h2>
+                <p class="creator-title">
+                    财富管理事业部 · 产品经理
+                </p>
+                <p class="creator-bio" style="margin-bottom: 1.5rem;">
+                    提供一些AIGC在证券行业内容运营领域的探索实践的粗浅建议。
+                </p>
+                <p class="creator-bio" style="margin-bottom: 0;">
+                    <strong style="color: var(--charcoal);">技术支持：</strong>有任何疑问欢迎线下咨询<br>
+                </p>
+            </div>
         </div>
     </main>
 

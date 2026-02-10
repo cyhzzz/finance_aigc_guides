@@ -9,7 +9,7 @@
 
     // 缓存DOM查询结果
     let currentSlide = 0;
-    const totalSlides = 23;
+    const totalSlides = 24;
     let isScrolling = false;
     let wheelTimeout = null;
 
