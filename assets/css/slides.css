@@ -3,6 +3,82 @@
  * 延迟加载，非关键CSS
  */
 
+/* 全局导航栏 - 与 common.css 保持一致 */
+.global-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem 2.5rem 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 100%);
+}
+
+.nav-logo {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--charcoal);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.nav-logo img {
+    height: 40px;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+}
+
+.nav-link {
+    position: relative;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    color: var(--stone);
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    opacity: 0.6;
+    color: var(--charcoal);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--charcoal);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* 进度条 */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background-color: var(--accent);
+    z-index: 1000;
+    transition: width 0.3s ease;
+}
+
 /* 幻灯片容器 - 严格16:9 */
 .slide-container {
     width: 100vw;
