@@ -273,7 +273,7 @@
        =========================== */
 
     /* 增大触摸目标 */
-    a, button, .nav-arrow, .toc-item {
+    a:not(.nav-logo), button, .nav-arrow, .toc-item {
         min-height: 44px !important;
         min-width: 44px !important;
     }

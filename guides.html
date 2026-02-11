@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>操作指引 | 爆款智坊</title>
-    <meta name="description" content="详细的工具配置步骤与流程图解，支持按需查阅">
+    <meta name="description" content="详细的工具配置步骤">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png">
@@ -12,6 +12,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon.png">
 
     <!-- Preload 关键资源 -->
+    <link rel="preload" href="assets/css/common.css" as="style">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -38,11 +39,13 @@
 
     <!-- 关键CSS内联 -->
     <style>
-        :root{--charcoal:#1a1a1a;--rice:#FFF;--stone:#666;--light-stone:#f5f5f5;--accent:#c9a96e}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none}html::-webkit-scrollbar{display:none}body{font-family:'Inter',sans-serif;background-color:var(--rice);color:var(--charcoal);overflow-x:hidden;line-height:1.7;min-height:100vh;padding-top:80px}.serif{font-family:'Playfair Display',serif}.global-nav{position:fixed;top:0;left:0;right:0;padding:1.5rem 2.5rem 1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;z-index:100;background:linear-gradient(to bottom,rgba(255,255,255,.95) 0%,rgba(255,255,255,0) 100%)}.nav-logo{font-size:1.1rem;font-weight:600;letter-spacing:-.02em;color:var(--charcoal);text-decoration:none;display:flex;align-items:center;gap:.75rem}.nav-logo img{height:40px;width:auto}.nav-links{display:flex;gap:2.5rem;font-size:.8rem;letter-spacing:.05em}.nav-link{position:relative;cursor:pointer;transition:opacity .3s;color:var(--stone);text-decoration:none}.nav-link:hover{opacity:.6;color:var(--charcoal)}.nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background-color:var(--charcoal);transition:width .3s ease}.nav-link:hover::after{width:100%}.container{max-width:1200px;margin:0 auto;padding:0 4rem}.section-label{font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--stone);display:block;margin-bottom:1rem}.section-title{font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.2;margin-bottom:1.5rem}.section-description{font-size:1.1rem;color:var(--stone);max-width:700px;font-weight:300}.card-grid{display:grid;gap:2rem;margin-top:4rem}.card-grid-3{grid-template-columns:repeat(3,1fr)}.card{padding:2rem;border:1px solid rgba(0,0,0,.05);transition:all .3s ease;background:#fff;cursor:pointer}.card:hover{border-color:rgba(0,0,0,.15);box-shadow:0 4px 12px rgba(0,0,0,.05);transform:translateY(-2px)}.card-icon{width:48px;height:48px;background:var(--light-stone);display:flex;align-items:center;justify-content:center;margin-bottom:1rem}.card h3{font-size:1.25rem;font-weight:500;margin-bottom:.5rem}.card p{font-size:.9rem;color:var(--stone);line-height:1.6}
+        :root{--charcoal:#1a1a1a;--rice:#FFF;--stone:#666;--light-stone:#f5f5f5;--accent:#c9a96e}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none}html::-webkit-scrollbar{display:none}body{font-family:'Inter',sans-serif;background-color:var(--rice);color:var(--charcoal);overflow-x:hidden;line-height:1.7;min-height:100vh;padding-top:80px}.serif{font-family:'Playfair Display',serif}.global-nav{position:fixed;top:0;left:0;right:0;padding:1.5rem 2.5rem 1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;z-index:100;background:linear-gradient(to bottom,rgba(255,255,255,.95) 0%,rgba(255,255,255,0) 100%)}.nav-logo{font-size:1.1rem;font-weight:600;letter-spacing:-.02em;color:var(--charcoal);text-decoration:none;display:flex;align-items:center;gap:.75rem}.nav-logo img{height:40px;width:auto}.nav-links{display:flex;gap:2.5rem;font-size:.8rem;letter-spacing:.05em}.nav-link{position:relative;cursor:pointer;transition:opacity .3s;color:var(--stone);text-decoration:none}.nav-link:hover{opacity:.6;color:var(--charcoal)}.nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background-color:var(--charcoal);transition:width .3s ease}.nav-link:hover::after{width:100%}.container{max-width:1200px;margin:0 auto;padding:0 4rem}.section-label{font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--stone);display:block;margin-bottom:1rem}.section-title{font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.2;margin-bottom:1.5rem}.section-description{font-size:1.1rem;color:var(--stone);max-width:700px;font-weight:300}.card-grid{display:grid;gap:2rem;margin-top:4rem}.card-grid-3{grid-template-columns:repeat(3,1fr)}.card{padding:2rem;border:1px solid rgba(0,0,0,.05);transition:all .3s ease;background:#fff;cursor:pointer}.card:hover{border-color:rgba(0,0,0,.15);box-shadow:0 4px 12px rgba(0,0,0,.05);transform:translateY(-2px)}.card-icon{width:48px;height:48px;background:var(--light-stone);display:flex;align-items:center;justify-content:center;margin-bottom:1rem}.card h3{font-size:1.25rem;font-weight:500;margin-bottom:.5rem}.card p{font-size:.9rem;color:var(--stone);line-height:1.6}@media(max-width:480px){.global-nav{background:rgba(255,255,255,.98)!important;backdrop-filter:blur(10px)}}
 
         /* Modal Styles */
         .modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;z-index:1000;opacity:0;transition:opacity .3s ease}.modal-overlay.active{display:flex;opacity:1}.modal{background:#fff;border-radius:8px;max-width:900px;width:90%;max-height:85vh;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.2);transform:scale(.95);transition:transform .3s ease}.modal-overlay.active .modal{transform:scale(1)}.modal-header{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 2rem;border-bottom:1px solid rgba(0,0,0,.05);background:var(--light-stone)}.modal-title{font-size:1.5rem;font-weight:600;color:var(--charcoal)}.modal-close{background:none;border:none;cursor:pointer;padding:.5rem;border-radius:4px;transition:background .3s ease;color:var(--stone)}.modal-close:hover{background:rgba(0,0,0,.05);color:var(--charcoal)}.modal-content{padding:2rem;overflow-y:auto;max-height:calc(85vh - 80px);line-height:1.8}.modal-content h1{font-size:2rem;font-weight:600;margin:2rem 0 1rem;color:var(--charcoal)}.modal-content h2{font-size:1.5rem;font-weight:600;margin:1.5rem 0 .75rem;color:var(--charcoal)}.modal-content h3{font-size:1.25rem;font-weight:600;margin:1.25rem 0 .5rem;color:var(--charcoal)}.modal-content p{margin-bottom:1rem;color:var(--charcoal)}.modal-content ul,.modal-content ol{margin-left:2rem;margin-bottom:1rem;color:var(--charcoal)}.modal-content li{margin-bottom:.5rem}.modal-content code{background:var(--light-stone);padding:.2rem .4rem;border-radius:3px;font-family:'Courier New',monospace;font-size:.9em}.modal-content pre{background:var(--light-stone);padding:1rem;border-radius:4px;overflow-x:auto;margin-bottom:1rem}.modal-content pre code{background:none;padding:0}.modal-content blockquote{border-left:4px solid var(--accent);padding-left:1rem;margin:1rem 0;color:var(--stone);font-style:italic}.modal-content strong{font-weight:600}.modal-content img{max-width:100%;height:auto;border-radius:4px;margin:1rem 0}.modal-content hr{border:none;border-top:1px solid rgba(0,0,0,.05);margin:2rem 0}.modal-content table{width:100%;border-collapse:collapse;margin-bottom:1rem}.modal-content th,.modal-content td{padding:.75rem;border:1px solid rgba(0,0,0,.05);text-align:left}.modal-content th{background:var(--light-stone);font-weight:600}.modal-loading{text-align:center;padding:3rem;color:var(--stone)}.modal-loading-spinner{border:3px solid var(--light-stone);border-top:3px solid var(--accent);border-radius:50%;width:40px;height:40px;animation:spin 1s linear infinite;margin:0 auto 1rem}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
     </style>
+    <link href="assets/css/common.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="assets/css/common.css" rel="stylesheet"></noscript>
 </head>
 <body>
     <!-- 全局导航 -->
@@ -89,7 +92,16 @@
 
             <h1 class="section-title serif">操作指引</h1>
             <p class="section-description">
-                详细的工具配置步骤与流程图解，支持按需查阅。
+                详细的工具配置步骤与流程图解，以下全是AI写的，但仍支持按需查阅。
+            </p>
+            <p class="section-description">
+                当前这个时代最好的通用教程是，找到AI的输入框:
+            </p>
+            <p class="section-description">
+“我想要XXX，请一步步指导我操作。”
+            </p>
+            <p class="section-description">
+当你碰到问题或报错时，再提供给AI，99%的情况下，你可以顺利走完流程。
             </p>
         </header>
 
@@ -98,32 +110,32 @@
                 <div class="card-icon">
                     <i data-lucide="settings" class="w-6 h-6" style="color: var(--stone)"></i>
                 </div>
-                <h3>元宝分组配置</h3>
-                <p>如何创建6000字符系统提示词分组，固化你的专业分身</p>
+                <h3>系统提示词配置指引</h3>
+                <p>以元宝为例，如何创建6000字符系统提示词分组，固化你的专业分身</p>
             </article>
 
             <article class="card" onclick="openModal('02-知识库搭建', '知识库搭建')" data-md="docs/02-知识库搭建.md">
                 <div class="card-icon">
                     <i data-lucide="database" class="w-6 h-6" style="color: var(--stone)"></i>
                 </div>
-                <h3>知识库搭建</h3>
-                <p>语雀/IMA知识库结构设计与文档上传规范</p>
+                <h3>知识库运用指引</h3>
+                <p>以腾讯IMA为例，知识库应用的操作指引</p>
             </article>
 
             <article class="card" onclick="openModal('03-扣子工作流设计', '扣子工作流设计')" data-md="docs/03-扣子工作流设计.md">
                 <div class="card-icon">
                     <i data-lucide="git-branch" class="w-6 h-6" style="color: var(--stone)"></i>
                 </div>
-                <h3>扣子工作流设计</h3>
-                <p>节点连接、API接入与条件分支设置详解</p>
+                <h3>工作流设计指引</h3>
+                <p>以扣子为例，节点连接、API接入与条件分支设置详解</p>
             </article>
 
             <article class="card" onclick="openModal('04-语音创作工作流', '语音创作工作流')" data-md="docs/04-语音创作工作流.md">
                 <div class="card-icon">
                     <i data-lucide="mic" class="w-6 h-6" style="color: var(--stone)"></i>
                 </div>
-                <h3>语音创作工作流</h3>
-                <p>使用语音输入快速生成专业内容</p>
+                <h3>🌟语音创作工作流</h3>
+                <p>以GET笔记为例，使用语音输入快速生成专业内容</p>
             </article>
 
             <article class="card" onclick="openModal('05-提示词优化技巧', '提示词优化技巧')" data-md="docs/05-提示词优化技巧.md">
@@ -134,12 +146,12 @@
                 <p>提升AI生成质量的实用技巧与案例</p>
             </article>
 
-            <article class="card" onclick="openModal('06-合规与风险控制', '合规与风险控制')" data-md="docs/06-合规与风险控制.md">
+            <article class="card" onclick="openModal('06-扣子SKILL使用指引', '扣子SKILL使用指引')" data-md="docs/06-扣子SKILL使用指引.md">
                 <div class="card-icon">
-                    <i data-lucide="shield" class="w-6 h-6" style="color: var(--stone)"></i>
+                    <i data-lucide="rocket" class="w-6 h-6" style="color: var(--stone)"></i>
                 </div>
-                <h3>合规与风险控制</h3>
-                <p>财经内容创作的合规要点与风险防范</p>
+                <h3>SKILL使用指引</h3>
+                <p>以扣子编程为例，将Skill工具快速部署运用的入门级使用指引</p>
             </article>
         </div>
     </main>
@@ -153,7 +165,7 @@
     <script src="assets/js/guides/03-扣子工作流设计.js"></script>
     <script src="assets/js/guides/04-语音创作工作流.js"></script>
     <script src="assets/js/guides/05-提示词优化技巧.js"></script>
-    <script src="assets/js/guides/06-合规与风险控制.js"></script>
+    <script src="assets/js/guides/06-扣子SKILL使用指引.js"></script>
 
     <script>
         // Initialize Lucide icons
@@ -170,7 +182,12 @@
             document.body.style.overflow = 'hidden';
 
             // Get markdown content from guidesContent
-            const markdownText = guidesContent[mdKey];
+            const markdownText = guidesContent ? guidesContent[mdKey] : null;
+
+            // Debug: log the key and available keys
+            console.log('Loading guide for key:', mdKey);
+            console.log('Available keys:', guidesContent ? Object.keys(guidesContent) : 'guidesContent is undefined');
+            console.log('Found content:', markdownText ? 'Yes' : 'No');
 
             if (markdownText) {
                 // Parse markdown
@@ -184,7 +201,7 @@
                     <div style="text-align: center; padding: 3rem; color: var(--stone);">
                         <i data-lucide="alert-circle" style="width: 48px; height: 48px; margin-bottom: 1rem;"></i>
                         <div style="font-size: 1.1rem; margin-bottom: 0.5rem;">内容未找到</div>
-                        <div style="font-size: 0.9rem;">无法加载该操作指引的内容</div>
+                        <div style="font-size: 0.9rem;">无法加载该操作指引的内容：${mdKey}</div>
                     </div>
                 `;
                 lucide.createIcons();

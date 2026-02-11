@@ -60,53 +60,19 @@
        新增：顶部章节导航条
        =========================== */
 
-    /* 在导航栏后面添加章节导航 */
-    .global-nav {
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    }
-
-    /* 创建新的顶部章节导航（通过JS动态生成） */
+    /* 隐藏章节导航条（移动端不需要） */
     .chapter-nav {
-        display: block !important;
-        position: sticky !important;
-        top: 70px !important;
-        z-index: 90 !important;
-        background: #fff !important;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
-        padding: 0.75rem 1rem !important;
-        overflow-x: auto !important;
-        overflow-y: hidden !important;
-        white-space: nowrap !important;
-        -webkit-overflow-scrolling: touch !important;
-        scrollbar-width: none !important;
-    }
-
-    .chapter-nav::-webkit-scrollbar {
         display: none !important;
-    }
-
-    .chapter-nav-item {
-        display: inline-block !important;
-        font-size: 0.75rem !important;
-        padding: 0.4rem 0.8rem !important;
-        margin-right: 0.5rem !important;
-        background: var(--light-stone) !important;
-        border-radius: 15px !important;
-        color: var(--stone) !important;
-        text-decoration: none !important;
-        transition: all 0.2s ease !important;
-        flex-shrink: 0 !important;
-    }
-
-    .chapter-nav-item:active,
-    .chapter-nav-item.active {
-        background: var(--charcoal) !important;
-        color: var(--rice) !important;
     }
 
     /* ===========================
        章节标题优化
        =========================== */
+
+    /* 隐藏原有的章节指示器，因为使用::before显示章节名 */
+    .chapter-indicator {
+        display: none !important;
+    }
 
     /* 每个章节添加明显的视觉分隔 */
     .slide-container::before {
@@ -283,14 +249,16 @@
        =========================== */
 
     .back-to-top {
-        display: block !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
         position: fixed !important;
         bottom: 2rem !important;
         right: 1rem !important;
         width: 44px !important;
         min-height: 44px !important;
-        background: var(--charcoal) !important;
-        color: var(--rice) !important;
+        background: rgba(0, 0, 0, 0.5) !important;
+        color: #fff !important;
         border: none !important;
         border-radius: 50% !important;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
@@ -304,18 +272,11 @@
     }
 
     /* ===========================
-       阅读进度条
+       阅读进度条 - 已隐藏（用户反馈造成视觉干扰）
        =========================== */
 
     .reading-progress {
-        display: block !important;
-        position: fixed !important;
-        top: 70px !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 2px !important;
-        background: rgba(0, 0, 0, 0.05) !important;
-        z-index: 100 !important;
+        display: none !important;
     }
 
     .reading-progress-bar {
